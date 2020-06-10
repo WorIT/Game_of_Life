@@ -13,7 +13,6 @@ public class SplashActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_splash);
 
-
         new Thread() {
             public void run() {
                 // загрузка начальных данных пользователя
