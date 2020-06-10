@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btn_main_play"
+        style="@style/main_menu_btn"
+        android:layout_marginTop="60dp"
+        android:text="@string/play"
+        app:layout_constraintEnd_toEndOf="@+id/imageButton"
+        app:layout_constraintStart_toStartOf="@+id/imageButton"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton" />
+
+    <Button
+        android:id="@+id/btn_main_save"
+        style="@style/main_menu_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/background_menu_item"
+        android:text="@string/my_saves"
+        app:layout_constraintEnd_toEndOf="@+id/btn_main_play"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btn_main_play"
+        app:layout_constraintTop_toBottomOf="@+id/btn_main_play" />
+
+    <Button
+        android:id="@+id/btn_main_patterns"
+        style="@style/main_menu_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/background_menu_item"
+        android:text="@string/patterns"
+        app:layout_constraintEnd_toEndOf="@+id/btn_main_save"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btn_main_save"
+        app:layout_constraintTop_toBottomOf="@+id/btn_main_save" />
+
+    <Button
+        android:id="@+id/btn_main_artic_and_rules"
+        style="@style/main_menu_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/rules_and_articles"
+        app:layout_constraintEnd_toEndOf="@+id/btn_main_patterns"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btn_main_patterns"
+        app:layout_constraintTop_toBottomOf="@+id/btn_main_patterns" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="115dp"
+        android:layout_height="116dp"
+        android:layout_marginTop="156dp"
+        android:background="@drawable/ellipse_user_avatar"
+        android:src="@drawable/baseline_person_outline_black_18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.53"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Game of Life</string>
+    <string name="play">Play</string>
+    <string name="my_saves">Saves</string>
+    <string name="patterns">Patterns</string>
+    <string name="rules_and_articles">Articles and Rules</string>
+</resources>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Игра Жизнь</string>
+    <string name="play">Играть</string>
+    <string name="my_saves">Сохранения</string>
+    <string name="patterns">Шаблоны</string>
+    <string name="rules_and_articles">Статьи и правила</string>
+</resources>
