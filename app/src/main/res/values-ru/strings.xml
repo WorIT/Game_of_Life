@@ -5,4 +5,6 @@
     <string name="my_saves">Сохранения</string>
     <string name="patterns">Шаблоны</string>
     <string name="rules_and_articles">Статьи и правила</string>
+    <string name="register">Зарегестрироваться</string>
+    <string name="sign_in">Войти</string>
 </resources>

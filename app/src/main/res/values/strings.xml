@@ -4,4 +4,7 @@
     <string name="my_saves">Saves</string>
     <string name="patterns">Patterns</string>
     <string name="rules_and_articles">Articles and Rules</string>
+    <string name="register">REGISTER</string>
+    <string name="sign_in">SIGN IN</string>
+
 </resources>

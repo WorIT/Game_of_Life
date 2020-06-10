@@ -7,18 +7,29 @@
     android:background="@drawable/main_menu_gradient"
     tools:context=".MainActivity">
 
+
+    <ImageButton
+        android:id="@+id/btn_main_settings"
+        style="@style/btn_main_menu"
+        android:layout_width="88dp"
+        android:layout_height="49dp"
+        android:layout_marginBottom="4dp"
+        android:src="@drawable/baseline_settings_white_18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_main_play"
         style="@style/btn_main_menu"
         android:layout_width="0dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="8dp"
         android:text="@string/play"
         app:layout_constraintEnd_toEndOf="@+id/btn_main_arcticles_and_rules"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/btn_main_arcticles_and_rules"
         app:layout_constraintTop_toBottomOf="@+id/imbtn_user_avatar"
         tools:ignore="MissingConstraints" />
-
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_main_save"
@@ -60,12 +71,25 @@
         style="@style/btn_main_menu"
         android:layout_width="115dp"
         android:layout_height="116dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="80dp"
         android:src="@drawable/baseline_person_outline_black_18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_main_sign_in"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="23dp"
+        android:text="@string/sign_in"
+        android:textColor="#000000"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_main_settings"
+        app:layout_constraintStart_toEndOf="@+id/btn_main_settings"
+        app:strokeWidth="1dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
