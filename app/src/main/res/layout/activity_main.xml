@@ -4,65 +4,68 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/main_menu_gradient"
     tools:context=".MainActivity">
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_main_play"
-        style="@style/main_menu_btn"
+        style="@style/btn_main_menu"
+        android:layout_width="0dp"
         android:layout_marginTop="60dp"
         android:text="@string/play"
-        app:layout_constraintEnd_toEndOf="@+id/imageButton"
-        app:layout_constraintStart_toStartOf="@+id/imageButton"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton" />
-
-    <Button
-        android:id="@+id/btn_main_save"
-        style="@style/main_menu_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/background_menu_item"
-        android:text="@string/my_saves"
-        app:layout_constraintEnd_toEndOf="@+id/btn_main_play"
+        app:layout_constraintEnd_toEndOf="@+id/btn_main_arcticles_and_rules"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/btn_main_play"
+        app:layout_constraintStart_toStartOf="@+id/btn_main_arcticles_and_rules"
+        app:layout_constraintTop_toBottomOf="@+id/imbtn_user_avatar"
+        tools:ignore="MissingConstraints" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_main_save"
+        style="@style/btn_main_menu"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/my_saves"
+        app:layout_constraintEnd_toEndOf="@+id/btn_main_arcticles_and_rules"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btn_main_arcticles_and_rules"
         app:layout_constraintTop_toBottomOf="@+id/btn_main_play" />
 
-    <Button
-        android:id="@+id/btn_main_patterns"
-        style="@style/main_menu_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/background_menu_item"
-        android:text="@string/patterns"
-        app:layout_constraintEnd_toEndOf="@+id/btn_main_save"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/btn_main_save"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_main_arcticles_and_rules"
+        style="@style/btn_main_menu"
+        android:layout_marginTop="12dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:text="@string/rules_and_articles"
+        app:layout_constraintEnd_toEndOf="@+id/imbtn_user_avatar"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="@+id/imbtn_user_avatar"
         app:layout_constraintTop_toBottomOf="@+id/btn_main_save" />
 
-    <Button
-        android:id="@+id/btn_main_artic_and_rules"
-        style="@style/main_menu_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/rules_and_articles"
-        app:layout_constraintEnd_toEndOf="@+id/btn_main_patterns"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_main_patterns"
+        style="@style/btn_main_menu"
+        android:layout_width="0dp"
+        android:layout_marginTop="80dp"
+        android:text="@string/patterns"
+        app:layout_constraintEnd_toEndOf="@+id/btn_main_arcticles_and_rules"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/btn_main_patterns"
-        app:layout_constraintTop_toBottomOf="@+id/btn_main_patterns" />
+        app:layout_constraintStart_toStartOf="@+id/btn_main_arcticles_and_rules"
+        app:layout_constraintTop_toBottomOf="@+id/btn_main_save" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/imbtn_user_avatar"
+        style="@style/btn_main_menu"
         android:layout_width="115dp"
         android:layout_height="116dp"
-        android:layout_marginTop="156dp"
-        android:background="@drawable/ellipse_user_avatar"
+        android:layout_marginTop="96dp"
         android:src="@drawable/baseline_person_outline_black_18dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.53"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
