@@ -1,6 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_menu_gradient">
+
+    <ImageButton
+        android:id="@+id/btn_main_settings"
+        style="@style/btn_main_menu"
+        android:layout_width="88dp"
+        android:layout_height="49dp"
+        android:src="@drawable/baseline_settings_white_18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_main_arcticles_and_rules"
+        app:layout_constraintHorizontal_bias="0.447"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_main_play"
+        style="@style/btn_main_menu"
+        android:layout_width="0dp"
+        android:layout_marginBottom="4dp"
+        android:text="@string/play"
+        app:layout_constraintBottom_toTopOf="@+id/btn_main_save"
+        app:layout_constraintEnd_toEndOf="@+id/btn_main_save"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btn_main_save"
+        tools:ignore="MissingConstraints" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_main_save"
+        style="@style/btn_main_menu"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/my_saves"
+        app:layout_constraintBottom_toTopOf="@+id/btn_main_patterns"
+        app:layout_constraintEnd_toEndOf="@+id/btn_main_patterns"
+        app:layout_constraintStart_toStartOf="@+id/btn_main_patterns" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_main_arcticles_and_rules"
+        style="@style/btn_main_menu"
+        android:layout_marginBottom="20dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:text="@string/rules_and_articles"
+        app:layout_constraintBottom_toTopOf="@+id/btn_main_settings"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_main_patterns"
+        style="@style/btn_main_menu"
+        android:layout_width="0dp"
+        android:text="@string/patterns"
+        app:layout_constraintBottom_toTopOf="@+id/btn_main_arcticles_and_rules"
+        app:layout_constraintEnd_toEndOf="@+id/btn_main_arcticles_and_rules"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btn_main_arcticles_and_rules" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_main_sign_in"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sign_in"
+        android:textColor="#000000"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_main_arcticles_and_rules"
+        app:strokeWidth="1dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

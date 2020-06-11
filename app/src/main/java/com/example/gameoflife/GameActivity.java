@@ -2,6 +2,7 @@ package com.example.gameoflife;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -12,6 +13,7 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
 import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
@@ -24,6 +26,14 @@ public class GameActivity extends Activity implements View.OnTouchListener,
 
     private SurfaceView mSurface;
     private DrawingThread mThread;
+    private ScaleGestureDetector SGD;
+    private Context context;
+    private boolean isSingleTouch;
+    private float width, height = 0;
+    private float scale = 1f;
+    private float minScale = 1f;
+    private float maxScale = 5f;
+    int left, top, right, bottom;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -54,12 +64,14 @@ public class GameActivity extends Activity implements View.OnTouchListener,
     public void surfaceCreated(SurfaceHolder holder) {
         mThread = new DrawingThread(holder, BitmapFactory.decodeResource(getResources(), R.drawable.baseline_settings_white_18dp));
         mThread.start();
+
     }
 
     @Override
     public void surfaceChanged(SurfaceHolder holder, int format, int width,
                                int height) {
         mThread.updateSize(width, height);
+
     }
 
     @Override
