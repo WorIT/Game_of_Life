@@ -11,21 +11,20 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.fragment_sign_in)
 
-        init()
+        ///init()
 
-        setListeners()
+     ///   setListeners()
 
     }
 
-    fun init(){
-        btn_play = findViewById(R.id.btn_main_play)
-    }
-
-    fun setListeners(){
-        btn_play.setOnClickListener(View.OnClickListener {
-            startActivity(Intent(this,GameActivity::class.java))
-        })
-    }
+   // fun init(){
+   //     btn_play = findViewById(R.id.btn_main_play)
+//}
+    ///fun setListeners(){
+   ///     btn_play.setOnClickListener(View.OnClickListener {
+    //        startActivity(Intent(this,GameActivity::class.java))
+    //    })
+    ///}
 }
