@@ -8,6 +8,61 @@
     tools:context=".MainActivity">
 
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_main_play"
+            style="@style/btn_main_menu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/play"
+            app:layout_constraintBottom_toTopOf="@+id/btn_main_save"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/btn_main_save"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.6"
+            tools:ignore="MissingConstraints" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_main_save"
+            style="@style/btn_main_menu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/my_saves"
+            app:layout_constraintBottom_toTopOf="@+id/btn_main_patterns"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/btn_main_patterns" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_main_patterns"
+            style="@style/btn_main_menu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/patterns"
+            app:layout_constraintBottom_toTopOf="@+id/btn_main_arcticles_and_rules"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/btn_main_arcticles_and_rules" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_main_arcticles_and_rules"
+            style="@style/btn_main_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="5dp"
+            android:paddingEnd="20dp"
+            android:text="@string/rules_and_articles"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <ImageButton
         android:id="@+id/btn_main_settings"
         style="@style/btn_main_menu"
@@ -18,46 +73,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_main_play"
-        style="@style/btn_main_menu"
-        android:layout_width="0dp"
-        android:text="@string/play"
-        app:layout_constraintBottom_toTopOf="@+id/btn_main_patterns"
-        app:layout_constraintEnd_toEndOf="@+id/btn_main_patterns"
-        app:layout_constraintStart_toStartOf="@+id/btn_main_patterns"
-        tools:ignore="MissingConstraints" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_main_save"
-        style="@style/btn_main_menu"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/my_saves"
-        app:layout_constraintBottom_toTopOf="@+id/btn_main_arcticles_and_rules"
-        app:layout_constraintEnd_toEndOf="@+id/btn_main_arcticles_and_rules"
-        app:layout_constraintStart_toStartOf="@+id/btn_main_arcticles_and_rules" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_main_arcticles_and_rules"
-        style="@style/btn_main_menu"
-        android:layout_marginBottom="100dp"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
-        android:text="@string/rules_and_articles"
-        app:layout_constraintBottom_toTopOf="@+id/btn_main_settings"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_main_patterns"
-        style="@style/btn_main_menu"
-        android:layout_width="0dp"
-        android:text="@string/patterns"
-        app:layout_constraintBottom_toTopOf="@+id/btn_main_save"
-        app:layout_constraintEnd_toEndOf="@+id/btn_main_save"
-        app:layout_constraintStart_toStartOf="@+id/btn_main_save" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_main_sign_in"

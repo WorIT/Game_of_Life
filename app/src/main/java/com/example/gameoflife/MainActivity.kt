@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
     fun setListeners(){
         btn_play.setOnClickListener(View.OnClickListener {
-            startActivity(Intent(this,GameActivity::class.java))
+            startActivity(Intent(this,SplashActivity::class.java))
         })
     }
 }
