@@ -18,9 +18,6 @@
     <string name="new_login">"New Username"</string>
     <string name="new_password">Your password</string>
     <string name="new_email">Your email</string>
-    <string name="about_email">If you add email we can able to recover your password,
-                                this is not necessary
-    </string>
-
+    <string name="top_rated_tv">Top rated users</string>
 
 </resources>
