@@ -18,5 +18,6 @@
     <string name="new_login">Имя пользователя</string>
     <string name="new_password">Ваш пароль</string>
     <string name="new_email">Ваша почта</string>
-    <string name="top_rated_tv">Лидеры рейтинга</string>
+    <string name="top_rated_users_tv">Лидеры рейтинга</string>
+    <string name="top_rated_patterns_tv">Лучшие шаблоны</string>
 </resources>

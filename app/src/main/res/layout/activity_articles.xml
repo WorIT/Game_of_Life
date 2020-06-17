@@ -20,6 +20,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
+        android:backgroundTint="@color/owlblue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -28,35 +29,38 @@
             android:id="@+id/tv_articles_topinfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
             android:fontFamily="@font/roboto"
             android:gravity="center"
-            android:text="@string/top_rated_tv"
+            android:textColor="#FFFFFF"
             android:textSize="18sp"
             android:textStyle="normal" />
     </androidx.cardview.widget.CardView>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <!-- Other components and views -->
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="10dp">
 
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/bar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+                android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             app:hideOnScroll="true"
-            app:navigationIcon="@drawable/baseline_person_outline_black_18dp"/>
+            android:backgroundTint="@color/colorPrimary"
+            app:fabAlignmentMode="end"
+            app:navigationIcon="@mipmap/ic_account_outline"
+
+            />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:foreground="@drawable/baseline_add_white_18dp"
-            app:layout_anchor="@id/bar"/>
+            android:backgroundTint="@color/owlblue"
+            android:foreground="@drawable/plus_white"
+            app:layout_anchor="@id/bar" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

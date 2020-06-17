@@ -1,17 +1,22 @@
 package com.example.gameoflife.classes;
 
-
 public class Point {
     private int x;
     private int y;
     public boolean flag;
+    private final boolean ALIVE = true;
+    private final boolean DEAD = false;
 
     public Point(int x, int y) {
         this.x = x;
         this.y = y;
     }
 
-
+    public Point(int x, int y, boolean flag) {
+        this.x = x;
+        this.y = y;
+        this.flag = flag;
+    }
 
     public int getX() {
         return x;

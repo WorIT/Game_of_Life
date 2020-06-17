@@ -7,8 +7,8 @@
     android:id="@+id/containerMain"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00e676"
-    tools:context=".activities.MainActivity">
+    tools:context=".activities.MainActivity"
+    android:background="@drawable/main_menu_gradient">
 
 
     <ImageButton
@@ -16,10 +16,10 @@
         style="@style/btn_main_menu"
         android:layout_width="88dp"
         android:layout_height="49dp"
-        android:layout_marginBottom="4dp"
-        android:src="@drawable/baseline_settings_white_18dp"
+        android:src="@mipmap/ic_cog_outline"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.button.MaterialButton

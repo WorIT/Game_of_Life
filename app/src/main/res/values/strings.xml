@@ -18,6 +18,7 @@
     <string name="new_login">"New Username"</string>
     <string name="new_password">Your password</string>
     <string name="new_email">Your email</string>
-    <string name="top_rated_tv">Top rated users</string>
-
+    <string name="top_rated_users_tv">Top rated users</string>
+    <string name="top_rated_patterns_tv">Best patterns</string>
 </resources>
+
