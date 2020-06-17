@@ -6,6 +6,8 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.example.gameoflife.activities.MainActivity;
+import com.example.gameoflife.interfaces.FireCallback;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.FirebaseDatabase;
@@ -22,10 +24,17 @@ import java.util.Objects;
 public class Firebase {
     private FirebaseDatabase database;
     private FirebaseAuth databaseAuth;
+    private static FireCallback callback;
 
-    public Firebase(FirebaseDatabase database, FirebaseAuth databaseAuth) {
+    public Firebase(FirebaseDatabase database, FirebaseAuth databaseAuth, FireCallback callback) {
         this.database = database;
         this.databaseAuth = databaseAuth;
+        registerCallBack(callback);
+    }
+
+
+    public void registerCallBack(FireCallback callback){
+        this.callback = callback;
     }
 
 
@@ -61,13 +70,12 @@ public class Firebase {
         database.getReference("patterns").child(pattern.getTitlePattern()).setValue(pattern);
     }
 
-    public void ListenerGetPatternByTitle(final String title, final ArrayList<Pattern> patterns){
+    public void getPatternByTitle(final String title){
         database.getReference("patterns").child(title).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Pattern p = dataSnapshot.getValue(Pattern.class);
-                patterns.add(p);
-                Log.d("myActions",patterns.get(0).getDescription());
+                callback.callPattern(p);  //// передача в активность данных
             }
 
             @Override
@@ -77,16 +85,16 @@ public class Firebase {
     }
 
 
-    public void ListenerGetAllPatterns(final ArrayList<Pattern> patterns){
+    public void getAllPatterns(){
         database.getReference("patterns").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                ArrayList<Pattern> patterns = new ArrayList<>();
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     Pattern pattern = ds.getValue(Pattern.class);
                     patterns.add(pattern);
                 }
-
-                Log.d("myActions",patterns.get(0).getDescription());
+                callback.callAllPatterns(patterns);
             }
 
             @Override
@@ -94,6 +102,7 @@ public class Firebase {
             }
         });
     }
+
 
 
 

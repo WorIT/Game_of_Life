@@ -4,8 +4,8 @@
     <string name="play">Играть</string>
     <string name="my_saves">Сохранения</string>
     <string name="patterns">Шаблоны</string>
-    <string name="rules_and_articles">Статьи и правила</string>
-    <string name="register">Зарегестрироваться</string>
+    <string name="rules_and_articles">Сообщество</string>
+    <string name="register">Регистрация</string>
     <string name="sign_in">Войти</string>
     <string name="login">Имя пользователя</string>
     <string name="password">Пароль</string>

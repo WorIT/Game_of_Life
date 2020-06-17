@@ -24,6 +24,7 @@ public class SThread extends Thread {
     private long mStartTime;
     private long mPrevRedrawTime;
 
+
     private Paint mPaint;
     private ArgbEvaluator mArgbEvaluator;
 

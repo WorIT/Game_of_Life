@@ -56,15 +56,13 @@ public class SurfView extends SurfaceView implements SurfaceHolder.Callback {
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
-        boolean retry = false;
         mMyThread.setRunning(false);
 
-      //  while(retry) {
-         ///   try {
-                ///mMyThread.join();
-         ///       retry = false;
-         //   }
-         ///   catch (InterruptedException ignored) {
-          ///  }
-        }
+    }
+
+    public void surfaceDestroyed() {
+        mMyThread.setRunning(false);
+    }
+
+
 }
