@@ -13,5 +13,6 @@ public interface FireCallback {
     void callPattern(Pattern pattern);
     void callAllPatterns(ArrayList<Pattern> patterns);
     void callUser(User user);
+    void callResponseBool(boolean flag);
 
 }

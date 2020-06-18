@@ -20,5 +20,6 @@
     <string name="new_email">Your email</string>
     <string name="top_rated_users_tv">Top rated users</string>
     <string name="top_rated_patterns_tv">Best patterns</string>
+    <string name="give_email">Send verification email</string>
 </resources>
 

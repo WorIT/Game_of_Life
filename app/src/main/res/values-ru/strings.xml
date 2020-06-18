@@ -20,4 +20,5 @@
     <string name="new_email">Ваша почта</string>
     <string name="top_rated_users_tv">Лидеры рейтинга</string>
     <string name="top_rated_patterns_tv">Лучшие шаблоны</string>
+    <string name="give_email">Отправить письмо с подтверждением</string>
 </resources>

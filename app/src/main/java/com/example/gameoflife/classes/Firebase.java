@@ -2,6 +2,7 @@ package com.example.gameoflife.classes;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -38,7 +39,7 @@ public class Firebase {
     }
 
 
-    public void registerUser(final String name, final String email, String password, Context context) {
+    public void registerUser(final String name, final String email, final String password, Context context) {
         //TODO проверка уникальности никнейма
         databaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener((Activity) context, new OnCompleteListener<AuthResult>() {
             @Override
@@ -103,8 +104,16 @@ public class Firebase {
         });
     }
 
+    public void enterUser(String email, String password, Context context){
+        databaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener((Activity) context, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    callback.callResponseBool(true);
+                } else callback.callResponseBool(false);
+            }
+        });
 
-
-
+    }
 
 }

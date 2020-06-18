@@ -7,7 +7,7 @@
     tools:context=".fragments.SignInFragment">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/outlinedTextField"
+        android:id="@+id/et_enter_nameUser"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -29,7 +29,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/container_new_usermane"
+        android:id="@+id/et_enter_password"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -37,9 +37,9 @@
         android:enabled="true"
         android:hint="@string/password"
         app:hintEnabled="true"
-        app:layout_constraintEnd_toEndOf="@+id/outlinedTextField"
-        app:layout_constraintStart_toStartOf="@+id/outlinedTextField"
-        app:layout_constraintTop_toBottomOf="@+id/outlinedTextField">
+        app:layout_constraintEnd_toEndOf="@+id/et_enter_nameUser"
+        app:layout_constraintStart_toStartOf="@+id/et_enter_nameUser"
+        app:layout_constraintTop_toBottomOf="@+id/et_enter_nameUser">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -48,17 +48,16 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_register_register"
+        android:id="@+id/btn_enter_enter"
         style="@style/btn_main_menu"
         android:layout_width="0dp"
-        android:layout_marginTop="40dp"
         android:text="@string/sign_in"
-        app:layout_constraintEnd_toEndOf="@+id/container_new_usermane"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/container_new_usermane"
-        app:layout_constraintTop_toBottomOf="@+id/container_new_usermane"
+        app:layout_constraintEnd_toEndOf="@+id/et_enter_password"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/et_enter_password"
         app:strokeColor="@color/design_default_color_primary"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="339dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

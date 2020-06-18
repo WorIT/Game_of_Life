@@ -16,9 +16,9 @@ import com.example.gameoflife.fragments.SignInFragment
 import com.example.gameoflife.interfaces.FireCallback
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
-import java.util.ArrayList
+import java.util.*
 
-class MainActivity : AppCompatActivity(),FireCallback  {
+open class MainActivity : AppCompatActivity(),FireCallback  {
 
     private lateinit var btn_main_play: Button
     private lateinit var btn_main_sign_in: Button
@@ -28,12 +28,11 @@ class MainActivity : AppCompatActivity(),FireCallback  {
     private lateinit var pattern : Pattern
     private lateinit var patterns : ArrayList<Pattern>
     public lateinit var callback:FireCallback
+    private val isSuccsesful = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        var x :Int
         setContentView(R.layout.activity_main)
-        FirebaseDatabase.getInstance()
 
         init()
 
@@ -42,6 +41,7 @@ class MainActivity : AppCompatActivity(),FireCallback  {
 
 
     }
+
     open fun imitateLoading() {
         try {
             Thread.sleep(2000)
@@ -56,7 +56,6 @@ class MainActivity : AppCompatActivity(),FireCallback  {
        btn_main_sign_in = findViewById(R.id.btn_main_sign_in)
        btn_main_articles = findViewById(R.id.btn_main_arcticles_and_rules)
        db = Firebase(FirebaseDatabase.getInstance(), FirebaseAuth.getInstance(), this)
-       db.getAllPatterns()
        ///db.addUserPattern("worit", Pattern(4,4,"haip","worit","busterim"))
        ///db.registerUser("worit","nechaev.world@gmail.com", "123456789",this)
 
@@ -118,6 +117,10 @@ class MainActivity : AppCompatActivity(),FireCallback  {
     }
 
     override fun callUser(user: User?) {
+        TODO("Not yet implemented")
+    }
+
+    override fun callResponseBool(flag: Boolean) {
         TODO("Not yet implemented")
     }
 

@@ -7,7 +7,7 @@
     tools:context=".fragments.RegisterFragment">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/container_new_usermane"
+        android:id="@+id/et_enter_password"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,9 +41,9 @@
 
         android:hint="@string/new_password"
         app:hintEnabled="true"
-        app:layout_constraintEnd_toEndOf="@+id/container_new_usermane"
+        app:layout_constraintEnd_toEndOf="@+id/et_enter_password"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/container_new_usermane"
+        app:layout_constraintStart_toStartOf="@+id/et_enter_password"
         app:layout_constraintTop_toBottomOf="@+id/container_new_email">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -63,10 +63,10 @@
 
         android:hint="@string/new_email"
         app:hintEnabled="true"
-        app:layout_constraintEnd_toEndOf="@+id/container_new_usermane"
+        app:layout_constraintEnd_toEndOf="@+id/et_enter_password"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/container_new_usermane"
-        app:layout_constraintTop_toBottomOf="@+id/container_new_usermane">
+        app:layout_constraintStart_toStartOf="@+id/et_enter_password"
+        app:layout_constraintTop_toBottomOf="@+id/et_enter_password">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_new_email"
@@ -76,7 +76,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_register_register"
+        android:id="@+id/btn_enter_enter"
         style="@style/btn_main_menu"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -85,7 +85,8 @@
         android:layout_marginBottom="10dp"
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
-        android:text="@string/register"
+        android:text="@string/give_email"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
