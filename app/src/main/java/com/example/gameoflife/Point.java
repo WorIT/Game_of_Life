@@ -30,6 +30,18 @@ public class Point {
                 y == point.y;
     }
 
+    public double distance(Point p){
+        return Math.sqrt((x-p.getX())*(x-p.getX()) + (y-p.getY())*(y-p.getY()));
+    }
+
+    @Override
+    public String toString() {
+        return "Point{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
+    }
+
     public int getY() {
         return y;
     }
