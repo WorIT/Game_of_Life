@@ -1,14 +1,14 @@
 package com.example.gameoflife.activities;
 
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.gameoflife.R;
 import com.example.gameoflife.threads.SurfView;
-
+import com.example.gameoflife.R;
 public class GameActivity extends AppCompatActivity {
 
     SurfView surfView;

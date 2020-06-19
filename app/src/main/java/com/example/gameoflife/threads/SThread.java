@@ -12,9 +12,9 @@ import com.example.gameoflife.classes.Point;
 
 public class SThread extends Thread {
 
-    private final int REDRAW_TIME = 15;
-    private Field field;
 
+    private final int REDRAW_TIME = 20;
+    private Field field;
     boolean isFixed = false;
     private final SurfaceHolder mSurfaceHolder;
     boolean isPlaying = true, isMoving = true, isEditing = false;
@@ -54,14 +54,11 @@ public class SThread extends Thread {
                 continue;
             canvas = null;
             try {
-
                 canvas = mSurfaceHolder.lockCanvas();
-
-
                 synchronized (mSurfaceHolder) {
                     draw(canvas);
                     g++;
-                    if (g >= REDRAW_TIME && isPlaying) {
+                    if (g >= 20 && isPlaying) {
                         field.move();
                         g = 0;
                     }
@@ -88,7 +85,7 @@ public class SThread extends Thread {
         isFixed = true;
     }
 
-    void setBool(boolean isPlaying, boolean isMoving, boolean isEditing){
+    void setBool(boolean isPlaying, boolean isMoving, boolean isEditing) {
         System.out.println(isPlaying);
         this.isEditing = isEditing;
         this.isPlaying = isPlaying;
@@ -97,14 +94,14 @@ public class SThread extends Thread {
             field.reZero();
     }
 
-    void setCoff(double coff, Point p){
+    void setCoff(double coff, Point p) {
         field.coefficient = coff;
         field.p = p;
-        field.spw = (int) ((field.width/2 - p.getX())*(coff-1))/2;
-        field.sph = (int) ((field.height/2 - p.getY())*(coff-1))/2;
+        field.spw = (int) ((field.width / 2 - p.getX()) * (coff - 1)) / 2;
+        field.sph = (int) ((field.height / 2 - p.getY()) * (coff - 1)) / 2;
     }
 
-    void fixCoff(){
+    void fixCoff() {
         field.fix_coefficient = field.coefficient * field.fix_coefficient;
         field.coefficient = 1;
         field.fix_spw = field.fix_spw + field.spw;
@@ -118,8 +115,8 @@ public class SThread extends Thread {
 
     private void draw(Canvas canvas) {
         canvas.drawColor(Color.WHITE);
-        if(isFixed){
-            field.shift = new Point(0,0);
+        if (isFixed) {
+            field.shift = new Point(0, 0);
             isFixed = false;
         }
         field.draw(canvas);

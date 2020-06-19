@@ -4,10 +4,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
-import com.example.gameoflife.classes.Point;
-
-import java.util.Arrays;
-
 public class Field {
     int [][] field0;
     int [][] field;
