@@ -21,6 +21,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Objects;
 
+import static java.util.Objects.*;
+
 
 public class Firebase {
     private FirebaseDatabase database;
@@ -34,7 +36,7 @@ public class Firebase {
     }
 
 
-    public void registerCallBack(FireCallback callback){
+    public void registerCallBack(FireCallback callback) {
         this.callback = callback;
     }
 
@@ -47,23 +49,24 @@ public class Firebase {
                 if (task.isSuccessful()) {
                     User newUser = new User(name, email);
                     database.getReference("userList").child(newUser.getName()).setValue(newUser);
-                    Objects.requireNonNull(databaseAuth.getCurrentUser()).sendEmailVerification();
-                    Log.d("myActions","createUserOnComplete");
+                    requireNonNull(databaseAuth.getCurrentUser()).sendEmailVerification();
+                    Log.d("myActions", "createUserOnComplete");
 
-                }else Log.d("myACtions", Objects.requireNonNull(Objects.requireNonNull(task.getException()).getMessage()));
+                } else
+                    Log.d("myACtions", requireNonNull(requireNonNull(task.getException()).getMessage()));
             }
         });
     }
 
-    public void addUserPattern(final String userName, Pattern pattern){
+    public void addUserPattern(final String userName, Pattern pattern) {
         /// TODO проверка уникальности паттерна
         database.getReference("userList").child(userName).child("patterns").setValue(pattern).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()){
+                if (task.isSuccessful()) {
                     //
-                }else {
-                    Log.d("myActions", Objects.requireNonNull(Objects.requireNonNull(task.getException()).getMessage()));
+                } else {
+                    Log.d("myActions", requireNonNull(requireNonNull(task.getException()).getMessage()));
                 }
             }
         });
@@ -71,7 +74,7 @@ public class Firebase {
         database.getReference("patterns").child(pattern.getTitlePattern()).setValue(pattern);
     }
 
-    public void getPatternByTitle(final String title){
+    public void getPatternByTitle(final String title) {
         database.getReference("patterns").child(title).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -85,26 +88,32 @@ public class Firebase {
         });
     }
 
-
-    public void getAllPatterns(){
-        database.getReference("patterns").addValueEventListener(new ValueEventListener() {
+    public void getUserByEmail(final String email) {
+        database.getReference().child("userList").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                ArrayList<Pattern> patterns = new ArrayList<>();
-                for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    Pattern pattern = ds.getValue(Pattern.class);
-                    patterns.add(pattern);
+             ///   for (DataSnapshot dataSnap : dataSnapshot.getChildren()) {
+                for (DataSnapshot ds : dataSnapshot.getChildren()){
+                    User user = ds.getValue(User.class);
+                    if (user.getEmail().equals(email)) {
+                        callback.callUser(user);
+                        return;
+                    }
                 }
-                callback.callAllPatterns(patterns);
-            }
+
+
+                }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
+            //// передача в активность данных
         });
     }
 
-    public void enterUser(String email, String password, Context context){
+
+    public void enterUser(String email, String password, Context context) {
         databaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener((Activity) context, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -115,5 +124,6 @@ public class Firebase {
         });
 
     }
-
 }
+
+

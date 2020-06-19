@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/main_menu_gradient"
     tools:context=".fragments.RegisterFragment">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/et_enter_password"
+        android:id="@+id/et_enter_email"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,9 +42,9 @@
 
         android:hint="@string/new_password"
         app:hintEnabled="true"
-        app:layout_constraintEnd_toEndOf="@+id/et_enter_password"
+        app:layout_constraintEnd_toEndOf="@+id/et_enter_email"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/et_enter_password"
+        app:layout_constraintStart_toStartOf="@+id/et_enter_email"
         app:layout_constraintTop_toBottomOf="@+id/container_new_email">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -63,10 +64,10 @@
 
         android:hint="@string/new_email"
         app:hintEnabled="true"
-        app:layout_constraintEnd_toEndOf="@+id/et_enter_password"
+        app:layout_constraintEnd_toEndOf="@+id/et_enter_email"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/et_enter_password"
-        app:layout_constraintTop_toBottomOf="@+id/et_enter_password">
+        app:layout_constraintStart_toStartOf="@+id/et_enter_email"
+        app:layout_constraintTop_toBottomOf="@+id/et_enter_email">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_new_email"

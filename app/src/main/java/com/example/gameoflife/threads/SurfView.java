@@ -62,10 +62,8 @@ public class SurfView extends SurfaceView implements SurfaceHolder.Callback {
 
                 if(isEditing)
                     mMyThread.addordel(p1);
-
-
-
                 break;
+
             case MotionEvent.ACTION_POINTER_DOWN:
                 if(isMoving)
                     distance1 = Math.sqrt((event.getX(0) - event.getX(1))*(event.getX(0) - event.getX(1))

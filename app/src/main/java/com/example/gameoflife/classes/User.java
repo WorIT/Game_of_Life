@@ -37,8 +37,8 @@ public class User {
         this.email = email;
     }
 
-    public int getLikes() {
-        return likes;
+    public String getLikes() {
+        return String.valueOf(likes);
     }
 
     public void setLikes(int likes) {

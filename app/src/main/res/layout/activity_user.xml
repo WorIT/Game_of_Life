@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/main_menu_gradient"
     tools:context=".activities.UserActivity">
 
 
@@ -18,48 +19,42 @@
         app:srcCompat="@mipmap/ic_launcher" />
 
     <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_user_nameUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:text="Username"
+        android:layout_marginTop="40dp"
         android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/shapeableImageView"
-        app:layout_constraintTop_toTopOf="@+id/shapeableImageView" />
+        app:layout_constraintStart_toStartOf="@+id/shapeableImageView"
+        app:layout_constraintTop_toBottomOf="@+id/shapeableImageView" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/materialTextView"
+        android:id="@+id/tv_user_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:text="Email"
+        android:layout_marginTop="32dp"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/shapeableImageView"
-        app:layout_constraintStart_toEndOf="@+id/shapeableImageView" />
+        app:layout_constraintStart_toStartOf="@+id/tv_user_nameUser"
+        app:layout_constraintTop_toBottomOf="@+id/tv_user_nameUser" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/materialTextView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
         android:text="Likes"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/materialTextView3"
-        app:layout_constraintStart_toStartOf="@+id/materialTextView" />
+        app:layout_constraintBottom_toBottomOf="@+id/tv_user_likes"
+        app:layout_constraintStart_toEndOf="@+id/tv_user_likes" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/materialTextView3"
+        android:id="@+id/tv_user_likes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="0"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="48dp"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/shapeableImageView"
-        app:layout_constraintHorizontal_bias="0.593"
-        app:layout_constraintStart_toStartOf="@+id/shapeableImageView"
-        app:layout_constraintTop_toBottomOf="@+id/shapeableImageView" />
-
-
-
-
+        app:layout_constraintStart_toStartOf="@+id/tv_user_email"
+        app:layout_constraintTop_toBottomOf="@+id/tv_user_email" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,6 +8,7 @@
     <string name="register">Регистрация</string>
     <string name="sign_in">Войти</string>
     <string name="login">Имя пользователя</string>
+    <string name="email">Электронная почтаl</string>
     <string name="password">Пароль</string>
     <string name="action_sign_in">Войти или зарегистриваться</string>
     <string name="action_sign_in_short">Войти</string>
