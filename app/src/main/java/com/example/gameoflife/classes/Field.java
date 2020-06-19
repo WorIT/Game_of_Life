@@ -4,58 +4,78 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
+
+
 public class Field {
+    int [][] field0;
     int [][] field;
     int x_size = 30;
     int y_size = 30;
+    int x_size_with_coff = 30;
+    int y_size_with_coff = 30;
     int number_in_width = 30;
     int number_in_height= 30;
     int ALIVE = 1;
     int DEAD = 0;
-    Paint paintInRect;
-    Paint paintLines;
+    public int height = 0;
+    public int width = 0;
+    public double fix_coefficient = 2;
+    public double coefficient = 1;
+    public Point shift = new Point(0,0);
+    public Point fix_shift = new Point(0,0);
+    public Point p = new Point(0,0);
+    public int spw = 0;
+    public int fix_spw = 0;
+    public int sph = 0;
+    public int fix_sph = 0;
 
-    public Field(int width, int height){
-
-        number_in_width = width / x_size;
-        number_in_height = height / y_size;
-        paintInRect = new Paint();
-        paintInRect.setColor(Color.LTGRAY);
-        paintLines = new Paint();
-        paintLines.setAntiAlias(true);
-        paintLines.setColor(Color.BLACK);
-        paintLines.setTextSize(2);
-        System.out.println(number_in_width + " " + number_in_height);
+    public Field(Point point){
+        number_in_width = point.getX() / x_size;
+        number_in_height = point.getY() / y_size;
         field = new int[number_in_width+2][number_in_height+2];
-        field[number_in_width/2][number_in_height/2] = ALIVE;
-        field[number_in_width/2][number_in_height/2-1] = ALIVE;
-        field[number_in_width/2][number_in_height/2+1] = ALIVE;
-        field[number_in_width/2+1][number_in_height/2-1] = ALIVE;
-        field[number_in_width/2-1][number_in_height/2] = ALIVE;
+        field[number_in_width/2][number_in_height/2] = 1;
+        field[number_in_width/2][number_in_height/2-1] = 1;
+        field[number_in_width/2][number_in_height/2+1] = 1;
+        field[number_in_width/2+1][number_in_height/2-1] = 1;
+        field[number_in_width/2-1][number_in_height/2] = 1;
+        field0 = new int[number_in_width+2][number_in_height+2];
+        for (int i = 0; i < number_in_width+2; i++)
+            for (int j = 0; j < number_in_height+2; j++)
+                field0[i][j] = field[i][j];
+    }
 
-
+    public void reZero(){
+        for (int i = 0; i < number_in_width+2; i++)
+            for (int j = 0; j < number_in_height+2; j++)
+                field[i][j] = field0[i][j];
     }
 
     public void draw(Canvas canvas){
-        for (int i = 0; i < number_in_width; i++)
-            for (int j = 0; j < number_in_height; j++)
+        height = canvas.getHeight();
+        width = canvas.getWidth();
+        x_size_with_coff = (int) (x_size * coefficient * fix_coefficient);
+        y_size_with_coff = (int) (y_size * coefficient * fix_coefficient);
+        int x_shift = shift.getX() + fix_shift.getX() - (width-x_size_with_coff*(number_in_width-1)) / 2 - spw - fix_spw;
+        int y_shift = shift.getY() + fix_shift.getY() - (height-y_size_with_coff*(number_in_height-1)) / 2 - sph - fix_sph;
+
+        for (int i = 1; i < number_in_width; i++)
+            for (int j = 1; j < number_in_height; j++)
                 if(field[i][j] == ALIVE){
-
-                    canvas.drawRect(x_size*(i-1), y_size*(j-1), x_size*i, y_size*j,paintInRect);
+                    Paint p = new Paint();
+                    p.setColor(Color.LTGRAY);
+                    canvas.drawRect(x_size_with_coff*(i-1) - x_shift , y_size_with_coff*(j-1) - y_shift, x_size_with_coff*i - x_shift, y_size_with_coff*j - y_shift,p);
                 }
-
-
         for (int i = 0; i < number_in_width; i++)
             for (int j = 0; j < number_in_height; j++) {
-                canvas.drawLine(x_size*i, 0, x_size*i, y_size*number_in_height, new Paint());
-               canvas.drawLine(0, y_size*j, x_size*number_in_width, y_size*j, new Paint());
+                canvas.drawLine(x_size_with_coff*i - x_shift, -y_shift, x_size_with_coff*i - x_shift, y_size_with_coff*(number_in_height-1) -y_shift, new Paint());
+                canvas.drawLine( -x_shift, y_size_with_coff*j - y_shift , x_size_with_coff*(number_in_width-1) - x_shift, y_size_with_coff*j - y_shift , new Paint());
             }
-   }
+    }
 
     public void move(){
         int [][] field1 = new int[number_in_width+2][number_in_height+2];
-        for (int i = 1; i < number_in_width+1; i++) {
-            for (int j = 1; j < number_in_height+1; j++) {
+        for (int i = 1; i < number_in_width; i++) {
+            for (int j = 1; j < number_in_height; j++) {
                 int neidh = getNeighbors(i,j);
                 if (field[i][j] == DEAD && neidh == 3)
                     field1[i][j] = ALIVE;
@@ -77,9 +97,16 @@ public class Field {
         sum += field[x+1][y+1];
         sum += field[x][y+1];
         sum += field[x+1][y];
-       /// if(sum == 3)
-         ///   System.out.println(x + " " + y);
         return sum;
 
+    }
+
+    public void touch(Point point){
+        int x = (point.getX() + (shift.getX() + fix_shift.getX() - (width-x_size_with_coff*(number_in_width-1)) / 2 - spw - fix_spw))/ x_size_with_coff;
+        int y = (point.getY() + (shift.getY() + fix_shift.getY() - (height-y_size_with_coff*(number_in_height-1)) / 2 - sph - fix_sph))/ y_size_with_coff;
+        x = (x > number_in_width - 1? -1 : x);
+        y = (y > number_in_width - 1? -1 : y);
+        field0[x+1][y+1] = (field0[x+1][y+1] == ALIVE ? DEAD : ALIVE);
+        field[x+1][y+1] = (field[x+1][y+1] == ALIVE ? DEAD : ALIVE);
     }
 }
