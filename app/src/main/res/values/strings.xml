@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Game of Life</string>
+    <string name="app_name">Math Game Of Life</string>
     <string name="play">Play</string>
     <string name="my_saves">Saves</string>
     <string name="patterns">Patterns</string>
@@ -22,7 +22,6 @@
     <string name="top_rated_users_tv">Top rated users</string>
     <string name="top_rated_patterns_tv">Best patterns</string>
     <string name="give_email">Send verification email</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
 

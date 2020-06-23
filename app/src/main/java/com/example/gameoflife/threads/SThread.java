@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.view.SurfaceHolder;
+import android.view.View;
 
 import com.example.gameoflife.classes.Field;
 import com.example.gameoflife.classes.Point;
@@ -13,7 +14,7 @@ import com.example.gameoflife.classes.Point;
 public class SThread extends Thread {
 
 
-    private final int REDRAW_TIME = 20;
+    private final int REDRAW_TIME = 15;
     private Field field;
     boolean isFixed = false;
     private final SurfaceHolder mSurfaceHolder;
@@ -43,11 +44,15 @@ public class SThread extends Thread {
         return System.nanoTime() / 1_000_000;
     }
 
+    public Field getFied(){
+        return field;
+    }
+
     @Override
     public void run() {
         Canvas canvas;
         int g = 0;
-        while (mRunning) {
+        while (mRunning && !isInterrupted()) {
             long curTime = getTime();
             long elapsedTime = curTime - mPrevRedrawTime;
             if (elapsedTime < REDRAW_TIME)
@@ -63,7 +68,7 @@ public class SThread extends Thread {
                         g = 0;
                     }
                 }
-            } catch (NullPointerException e) {
+            } catch (Exception e) {
             } finally {
                 if (canvas != null)
                     try {

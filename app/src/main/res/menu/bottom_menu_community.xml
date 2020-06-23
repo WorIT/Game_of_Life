@@ -3,7 +3,7 @@
     <group android:checkableBehavior="none">
         <item
         android:id="@+id/navMainMenu"
-        android:icon="@drawable/home_white"
+        android:icon="@drawable/home_black"
         android:title="Профиль" />
         <item
             android:id="@+id/navUserProfile"
