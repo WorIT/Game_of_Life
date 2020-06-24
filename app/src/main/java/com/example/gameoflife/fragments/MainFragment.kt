@@ -1,10 +1,13 @@
 package com.example.gameoflife.fragments
 
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import com.example.gameoflife.R
@@ -15,6 +18,7 @@ class MainFragment : Fragment() {
 
     private var card_start : CardView? = null
     private var card_patterns : CardView? = null
+    private lateinit var iv : ImageView
 
 
 
@@ -32,6 +36,8 @@ class MainFragment : Fragment() {
 
         return view
     }
+    
+
 
 
 
@@ -50,6 +56,7 @@ class MainFragment : Fragment() {
         card_patterns?.setOnClickListener(View.OnClickListener {
             startFragment(PatternFragment())
         })
+
     }
 
 
@@ -60,5 +67,7 @@ class MainFragment : Fragment() {
         FragmentTransaction.commit()
 
     }
+
+
 
 }

@@ -32,7 +32,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/accent">
+            android:background="@color/accent"
+            android:elevation="6dp">
 
 
             <TextView
@@ -43,12 +44,12 @@
                 android:textColor="@android:color/white"
                 android:textSize="30sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/imageView2"
+                app:layout_constraintEnd_toStartOf="@+id/pattern_iv_curent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/pattern_iv_curent"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginVertical="5dp"
@@ -70,6 +71,7 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginBottom="50dp"
         app:cardCornerRadius="10dp"
+        app:cardElevation="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -119,11 +121,12 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/accent">
+            android:background="@color/accent"
+            android:elevation="6dp">
 
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/iv_main_tutorial"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginVertical="5dp"
@@ -143,7 +146,7 @@
                 android:textColor="@android:color/white"
                 android:textSize="30sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/imageView3"
+                app:layout_constraintEnd_toStartOf="@+id/iv_main_tutorial"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -155,6 +158,7 @@
         android:layout_height="100dp"
         android:layout_marginBottom="20dp"
         app:cardCornerRadius="10dp"
+        app:cardElevation="6dp"
         app:layout_constraintBottom_toTopOf="@+id/materialCardView"
         app:layout_constraintEnd_toEndOf="@+id/materialCardView"
         app:layout_constraintStart_toStartOf="@+id/materialCardView">

@@ -62,12 +62,12 @@
                 android:textColor="@android:color/white"
                 android:textSize="30sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/imageView2"
+                app:layout_constraintEnd_toStartOf="@+id/pattern_iv_curent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/pattern_iv_curent"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginVertical="5dp"
@@ -76,8 +76,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@mipmap/patterns_image" />
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 

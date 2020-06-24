@@ -1,14 +1,12 @@
 package com.example.gameoflife.fragments
 
+import android.R.drawable
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import android.widget.ImageView
+import androidx.fragment.app.Fragment
 import com.example.gameoflife.R
 
 
@@ -22,7 +20,8 @@ class PatternFragment : Fragment() {
 
         view.setOnClickListener(View.OnClickListener {})
 
-        val recyclerView = view.findViewById<RecyclerView>(R.id.rv_patterns)
+        val iv = view.findViewById<ImageView>(R.id.pattern_iv_curent)
+        iv.setImageResource(R.mipmap.ic_mario)
 
 
 
