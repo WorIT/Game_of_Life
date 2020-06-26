@@ -3,15 +3,11 @@ package com.example.gameoflife.activities
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.preference.PreferenceManager
 import com.example.gameoflife.R
 import com.example.gameoflife.classes.DbPatterns
-import com.example.gameoflife.classes.Field
 import com.example.gameoflife.fragments.MainFragment
-import com.google.gson.Gson
 
 
 open class MainActivity : AppCompatActivity()  {

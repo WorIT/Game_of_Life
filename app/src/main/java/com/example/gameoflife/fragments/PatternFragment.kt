@@ -23,11 +23,6 @@ import com.google.android.gms.ads.MobileAds
 
 
 class PatternFragment : Fragment() {
-    val APP_PREFERENCES = "mysettings"
-    val APP_PREFERENCES_CURRENT_FIELD = "field"
-    val APP_PREFERENCES_CURRENT_TITLE = "title"
-    val APP_PREFERENCES_CURRENT_PATH = "path"
-    var mSettings: SharedPreferences? = null
     var paths: HashMap<String,Int> = HashMap()
     var db: DbPatterns? = null
     var card_current : CardView? = null
@@ -63,13 +58,12 @@ class PatternFragment : Fragment() {
 
 
         btn_del.setOnClickListener(View.OnClickListener {
-            db!!.deleteqq(tvcur.text.toString())
+            db!!.deleteqq()
             tvcur.text = "Empty Field"
-            //TODO дефолтная картинка
-
+            iv.setBackgroundResource(R.drawable.ic_baseline_grid_on_24)
         })
-        Log.d("aaaa", arr.size.toString())
-        var adapter = PatternAdapter(arr, view, activity)
+
+        val adapter = PatternAdapter(arr, view, activity)
         card_current = view.findViewById(R.id.pattern_card_patterns)
 
         val layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(activity)

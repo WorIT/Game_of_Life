@@ -8,7 +8,6 @@ import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,7 +23,11 @@ import static java.lang.Thread.sleep;
 public class GameActivity extends AppCompatActivity {
 
     SurfView surfView;
-
+    boolean CheckboxPreference;
+    String ListPreference;
+    String editTextPreference;
+    String secondEditTextPreference;
+    String customPref;
     ImageButton play, move, edit;
     DbPatterns db;
 
@@ -34,6 +37,9 @@ public class GameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+
+
         surfView = findViewById(R.id.surfView);
         play = findViewById(R.id.playm);
         play.setBackgroundResource(R.drawable.ic_baseline_pause_24);
@@ -41,19 +47,20 @@ public class GameActivity extends AppCompatActivity {
         move.setBackgroundResource(R.drawable.ic_baseline_block_24);
         edit = findViewById(R.id.editm);
         edit.setBackgroundResource(R.drawable.ic_baseline_build_24);
+
+
+
         db = new DbPatterns(this);
 
 
-
     }
 
-    public long getTime() {
-        return System.nanoTime() / 1_000_000;
-    }
 
     @Override
     protected void onStart() {
         super.onStart();
+
+
         final Handler handler = new Handler() {
             @SuppressLint("HandlerLeak")
             @Override
@@ -84,26 +91,6 @@ public class GameActivity extends AppCompatActivity {
                 }else handler.sendMessage(msg);
             }
         }).start();
-
-
-
-
-
-
-
-
-        ///if(mSettings.contains(APP_PREFERENCES_CURRENT_TITLE) && mSettings.contains(APP_PREFERENCES_CURRNT_FIELD)) {
-        //surfView.mMyThread.setField(new Gson().fromJson(mSettings.getString(APP_PREFERENCES_CURRNT_FIELD,
-        //    ""),Field.class));
-        ///    Log.d("aaaa",mSettings.getString(APP_PREFERENCES_CURRNT_FIELD,
-        ///             "ttt"));
-
-
-        //   }
-
-        //title.setText(new Gson().toJson(getField()));
-
-        ///db.insert(title.getText().toString(),gson.toJson(getField()),path.getText().toString());
 
         move.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -43,18 +43,17 @@ public class DbPatterns {
         cv.put(COLUMN_PATH, path);
         return mDataBase.insert(TABLE_NAME, null, cv);
     }
-    public long insqq(String title){
+    public void insqq(String title){
             ContentValues cv = new ContentValues();
             cv.put(COLUMN_TITLE, title);
-            return mDataBase.insert(TABLE_NOW, null, cv);
+            return;
     }
 
-    public void deleteqq(String title) {
-        ///mDataBase.delete(TABLE_NOW, COLUMN_TITLE + " = ?", new String[]{title});
+    public void deleteqq() {
         mDataBase.delete(TABLE_NOW, null, null);
     }
 
-    public String getqq(){
+    public String getqq (){
         Cursor mCursor = mDataBase.query(TABLE_NOW, null, null, null, null, null, null);
         try {
             mCursor.moveToLast();
@@ -63,19 +62,11 @@ public class DbPatterns {
 
             return title;
         }catch (Exception e){
-            return "N";
+            return "me";
         }
 
     }
 
-
-    public void deleteAll() {
-        mDataBase.delete(TABLE_NAME, null, null);
-    }
-
-    public void delete(String title) {
-        mDataBase.delete(TABLE_NAME, COLUMN_TITLE + " = ?", new String[]{title});
-    }
 
     public Pattern select(String title) {
         Cursor mCursor = mDataBase.query(TABLE_NAME, null, COLUMN_TITLE + " = ?", new String[]{title}, null, null, null);

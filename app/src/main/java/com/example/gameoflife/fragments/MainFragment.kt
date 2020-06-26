@@ -7,8 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.Toast
-import androidx.appcompat.app.ActionBar
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import com.example.gameoflife.R
@@ -18,12 +16,11 @@ import com.google.android.gms.ads.*
 
 
 class MainFragment : Fragment() {
-    private var interstitialAd: InterstitialAd? = null
     private var card_start: CardView? = null
     private var card_patterns: CardView? = null
     private var card_make: CardView? = null
-    private var mInterstitialAd: InterstitialAd? = null
     private var adview: AdView? = null
+
 
 
 
@@ -56,6 +53,7 @@ class MainFragment : Fragment() {
         card_start = view.findViewById(R.id.main_card_start)
         card_make= view.findViewById(R.id.cardmake)
         card_patterns = view.findViewById(R.id.pattern_card_patterns)
+
         adview = view.findViewById(R.id.bannermain)
 
     }
@@ -72,9 +70,12 @@ class MainFragment : Fragment() {
             startFragment(PatternFragment())
 
         })
+
         card_make?.setOnClickListener(View.OnClickListener {
-            startActivity(Intent(activity,MakeActivity::class.java))
+            startActivity(Intent(activity, MakeActivity::class.java))
         })
+
+
 
 
     }

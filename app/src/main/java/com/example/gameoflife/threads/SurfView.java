@@ -2,6 +2,7 @@ package com.example.gameoflife.threads;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Display;
@@ -31,6 +32,7 @@ public class SurfView extends SurfaceView implements SurfaceHolder.Callback {
     Field field;
     Context context;
     boolean isover = false;
+    int COLOR_BACK = Color.BLACK;
 
     public SurfView(Context context) {
         super(context);
@@ -116,9 +118,6 @@ public class SurfView extends SurfaceView implements SurfaceHolder.Callback {
             }
         }
         return true;
-    }
-    public void increaseCount(){
-        counttv +=1;
     }
 
     @Override

@@ -16,15 +16,14 @@ import com.example.gameoflife.classes.Point;
 public class SThread extends Thread {
 
 
-    private final int REDRAW_TIME = 15;
+    private final int REDRAW_TIME = 5;
     private Field field;
     boolean isFixed = false;
     private final SurfaceHolder mSurfaceHolder;
     boolean isPlaying = true, isMoving = true, isEditing = false;
     private boolean mRunning;
     private long mPrevRedrawTime;
-    private SurfView surfView;
-    boolean isOver;
+    private Context context;
 
 
 
@@ -35,7 +34,7 @@ public class SThread extends Thread {
     public SThread(SurfaceHolder holder,Field field, Context context) {
         mSurfaceHolder = holder;
         mRunning = false;
-        ///this.surfView = surfView;
+        this.context = context;
         if (field!= null){
             this.field = field;
 
@@ -83,9 +82,8 @@ public class SThread extends Thread {
                 synchronized (mSurfaceHolder) {
                     draw(canvas);
                     g++;
-                    if (g >= 15 && isPlaying) {
+                    if (g >= 5 && isPlaying) {
                         field.move();
-                        this.surfView.increaseCount();
                         g = 0;
                     }
                 }
