@@ -35,7 +35,7 @@ public class GameActivity extends AppCompatActivity {
 
 
 
-        surfView = findViewById(R.id.surfView);
+
         play = findViewById(R.id.playm);
         play.setBackgroundResource(R.drawable.ic_baseline_pause_24);
         move = findViewById(R.id.movem);
@@ -54,7 +54,7 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
+        surfView = findViewById(R.id.surfView);
 
         final Handler handler = new Handler() {
             @SuppressLint("HandlerLeak")
@@ -67,7 +67,7 @@ public class GameActivity extends AppCompatActivity {
         new Thread(new Runnable() {
             public void run() {
                 try {
-                    sleep(500);
+                    sleep(200);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -147,8 +147,8 @@ public class GameActivity extends AppCompatActivity {
 
     @Override
     protected void onStop() {
-        super .onStop();
         surfView.mMyThread.interrupt();
+        super .onStop();
     }
 
     @Override

@@ -16,7 +16,7 @@ import com.example.gameoflife.classes.Point;
 public class SThread extends Thread {
 
 
-    private final int REDRAW_TIME = 5;
+    private final int REDRAW_TIME = 15;
     private Field field;
     boolean isFixed = false;
     private final SurfaceHolder mSurfaceHolder;
@@ -82,7 +82,7 @@ public class SThread extends Thread {
                 synchronized (mSurfaceHolder) {
                     draw(canvas);
                     g++;
-                    if (g >= 5 && isPlaying) {
+                    if (g >= 15 && isPlaying) {
                         field.move();
                         g = 0;
                     }

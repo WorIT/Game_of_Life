@@ -60,7 +60,7 @@ class PatternFragment : Fragment() {
         btn_del.setOnClickListener(View.OnClickListener {
             db!!.deleteqq()
             tvcur.text = "Empty Field"
-            iv.setBackgroundResource(R.drawable.ic_baseline_grid_on_24)
+            iv.setImageResource(R.drawable.ic_baseline_grid_on_24)
         })
 
         val adapter = PatternAdapter(arr, view, activity)
