@@ -56,13 +56,18 @@ public class DbPatterns {
 
     public String getqq (){
         Cursor mCursor = mDataBase.query(TABLE_NOW, null, null, null, null, null, null);
+        String title = "";
         try {
             mCursor.moveToLast();
-            String title = mCursor.getString(NUM_COLUMN_TITLE);
-            return title;
+            title = mCursor.getString(NUM_COLUMN_TITLE);
         }catch (Exception e){
-            return "me";
+                title = "";
+        }finally {
+            return title;
         }
+
+
+
 
     }
 

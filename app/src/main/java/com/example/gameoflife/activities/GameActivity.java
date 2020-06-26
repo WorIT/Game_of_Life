@@ -75,15 +75,23 @@ public class GameActivity extends AppCompatActivity {
                 Bundle bundle = new Bundle();
                 bundle.putString("Key", "empty");
                 msg.setData(bundle);
-                if (db.getqq().length() > 1) {
-                    surfView.mMyThread.setRunning(false);
+                int x = 5;
+                try{
+                    x = db.getqq().length();
+                }catch (Exception e){
+                    x = 0;
+                }
+                    if (x > 0) {
+                        surfView.mMyThread.setRunning(false);
 
-                    Field fields = new Gson().fromJson(db.select(db.getqq()).getField(), Field.class);
-                    Log.d("aarr", fields.toString());
-                    surfView.mMyThread.setField(fields);
-                    surfView.mMyThread.setRunning(true);
+                        Field fields = new Gson().fromJson(db.select(db.getqq()).getField(), Field.class);
+                        Log.d("aarr", fields.toString());
+                        surfView.mMyThread.setField(fields);
+                        surfView.mMyThread.setRunning(true);
 
-                }else handler.sendMessage(msg);
+                    }else handler.sendMessage(msg);
+
+
             }
         }).start();
 

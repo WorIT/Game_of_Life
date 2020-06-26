@@ -68,7 +68,7 @@
                 android:id="@+id/tv_current_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Pattern..."
+                android:text="Empty field"
                 android:textColor="@android:color/white"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
