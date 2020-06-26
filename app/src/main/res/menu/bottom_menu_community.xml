@@ -3,16 +3,13 @@
     <group android:checkableBehavior="none">
         <item
         android:id="@+id/navMainMenu"
-        android:icon="@drawable/home_black"
         android:title="Профиль" />
         <item
             android:id="@+id/navUserProfile"
-            android:icon="@mipmap/ic_account_outline"
             android:title="Рейтинг" />
 
         <item
             android:id="@+id/navTopRatedPatterns"
-            android:icon="@mipmap/ic_trophy"
             android:title="Лучшие паттерны" />
     </group>
 </menu>

@@ -1,7 +1,9 @@
 package com.example.gameoflife.threads;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Display;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
@@ -15,6 +17,7 @@ import com.example.gameoflife.R;
 import com.example.gameoflife.classes.Field;
 import com.example.gameoflife.classes.Point;
 import com.example.gameoflife.threads.SThread;
+import com.google.gson.Gson;
 
 public class SurfView extends SurfaceView implements SurfaceHolder.Callback {
 
@@ -22,11 +25,16 @@ public class SurfView extends SurfaceView implements SurfaceHolder.Callback {
     boolean isPlaying = true, isMoving = true, isEditing = false;
     Point p1 = new Point(0,0);
     Point p2 = new Point(0,0);
+    public int counttv = 0;
     double distance1 = 0;
     double distance2 = 0;
+    Field field;
+    Context context;
+    boolean isover = false;
 
     public SurfView(Context context) {
         super(context);
+        this.context = context;
         this.setX(1000);
         this.setY(1000);
         getHolder().addCallback(this);
@@ -34,7 +42,7 @@ public class SurfView extends SurfaceView implements SurfaceHolder.Callback {
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
-        mMyThread = new SThread(getHolder());
+        mMyThread = new SThread(getHolder(), field,context);
         mMyThread.setRunning(true);
         mMyThread.start();
     }
@@ -53,6 +61,7 @@ public class SurfView extends SurfaceView implements SurfaceHolder.Callback {
         getHolder().addCallback(this);
     }
 
+
     public void setBool(boolean isPlaying, boolean isMoving, boolean isEditing){
         this.isEditing = isEditing;
         this.isPlaying = isPlaying;
@@ -60,6 +69,7 @@ public class SurfView extends SurfaceView implements SurfaceHolder.Callback {
         mMyThread.setBool(isPlaying, isMoving, isEditing);
     }
     int id = 0;
+
 
     public Field getField(){
         return mMyThread.getFied();
@@ -73,7 +83,7 @@ public class SurfView extends SurfaceView implements SurfaceHolder.Callback {
                     id = event.getPointerId(0);
 
                 if(isEditing)
-                    mMyThread.addordel(p1);
+                   mMyThread.addordel(p1);
                 break;
             case MotionEvent.ACTION_POINTER_DOWN:
                 if(isMoving)
@@ -106,6 +116,9 @@ public class SurfView extends SurfaceView implements SurfaceHolder.Callback {
             }
         }
         return true;
+    }
+    public void increaseCount(){
+        counttv +=1;
     }
 
     @Override

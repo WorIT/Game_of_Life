@@ -1,6 +1,8 @@
 package com.example.gameoflife.threads;
 
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -21,18 +23,34 @@ public class SThread extends Thread {
     boolean isPlaying = true, isMoving = true, isEditing = false;
     private boolean mRunning;
     private long mPrevRedrawTime;
+    private SurfView surfView;
+    boolean isOver;
+
+
+
 
     private Paint mPaint;
 
-    public SThread(SurfaceHolder holder) {
+
+    public SThread(SurfaceHolder holder,Field field, Context context) {
         mSurfaceHolder = holder;
         mRunning = false;
+        ///this.surfView = surfView;
+        if (field!= null){
+            this.field = field;
 
-        field = new Field(new Point(1000, 1000));
+            mPaint = new Paint();
+            mPaint.setAntiAlias(true);
+            mPaint.setStyle(Paint.Style.FILL);
+        }
+        else {
+            this.field = new Field(new Point(1000, 1000));
 
-        mPaint = new Paint();
-        mPaint.setAntiAlias(true);
-        mPaint.setStyle(Paint.Style.FILL);
+            mPaint = new Paint();
+            mPaint.setAntiAlias(true);
+            mPaint.setStyle(Paint.Style.FILL);
+        }
+
     }
 
     public void setRunning(boolean running) {
@@ -43,6 +61,8 @@ public class SThread extends Thread {
     public long getTime() {
         return System.nanoTime() / 1_000_000;
     }
+
+    public void setField(Field field){this.field = field;}
 
     public Field getFied(){
         return field;
@@ -63,8 +83,9 @@ public class SThread extends Thread {
                 synchronized (mSurfaceHolder) {
                     draw(canvas);
                     g++;
-                    if (g >= 20 && isPlaying) {
+                    if (g >= 15 && isPlaying) {
                         field.move();
+                        this.surfView.increaseCount();
                         g = 0;
                     }
                 }
@@ -119,7 +140,7 @@ public class SThread extends Thread {
     }
 
     private void draw(Canvas canvas) {
-        canvas.drawColor(Color.WHITE);
+        canvas.drawColor(Color.BLACK);
         if (isFixed) {
             field.shift = new Point(0, 0);
             isFixed = false;
