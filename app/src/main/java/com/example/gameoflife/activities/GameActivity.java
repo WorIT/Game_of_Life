@@ -23,11 +23,6 @@ import static java.lang.Thread.sleep;
 public class GameActivity extends AppCompatActivity {
 
     SurfView surfView;
-    boolean CheckboxPreference;
-    String ListPreference;
-    String editTextPreference;
-    String secondEditTextPreference;
-    String customPref;
     ImageButton play, move, edit;
     DbPatterns db;
 
@@ -72,7 +67,7 @@ public class GameActivity extends AppCompatActivity {
         new Thread(new Runnable() {
             public void run() {
                 try {
-                    sleep(300);
+                    sleep(500);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

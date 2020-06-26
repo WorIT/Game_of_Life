@@ -36,6 +36,7 @@ public class DbPatterns {
         mSettings = context.getSharedPreferences(APP_PREFERENCES,context.MODE_PRIVATE);
     }
     public void close(){mDataBase.close();}
+
     public long insert(String title, String field, String path) {
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_TITLE, title);
@@ -43,10 +44,10 @@ public class DbPatterns {
         cv.put(COLUMN_PATH, path);
         return mDataBase.insert(TABLE_NAME, null, cv);
     }
-    public void insqq(String title){
+    public long insqq(String title){
             ContentValues cv = new ContentValues();
             cv.put(COLUMN_TITLE, title);
-            return;
+        return mDataBase.insert(TABLE_NOW, null, cv);
     }
 
     public void deleteqq() {
@@ -58,8 +59,6 @@ public class DbPatterns {
         try {
             mCursor.moveToLast();
             String title = mCursor.getString(NUM_COLUMN_TITLE);
-
-
             return title;
         }catch (Exception e){
             return "me";
