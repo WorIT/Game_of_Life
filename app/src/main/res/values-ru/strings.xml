@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Жизнь</string>
+    <string name="app_name">Математическая игра жизнь</string>
     <string name="play">Играть</string>
     <string name="my_saves">Сохранения</string>
     <string name="patterns">Шаблоны</string>
@@ -8,6 +8,7 @@
     <string name="register">Регистрация</string>
     <string name="sign_in">Войти</string>
     <string name="login">Имя пользователя</string>
+    <string name="email">Электронная почтаl</string>
     <string name="password">Пароль</string>
     <string name="action_sign_in">Войти или зарегистриваться</string>
     <string name="action_sign_in_short">Войти</string>
@@ -20,4 +21,5 @@
     <string name="new_email">Ваша почта</string>
     <string name="top_rated_users_tv">Лидеры рейтинга</string>
     <string name="top_rated_patterns_tv">Лучшие шаблоны</string>
+    <string name="give_email">Отправить письмо с подтверждением</string>
 </resources>

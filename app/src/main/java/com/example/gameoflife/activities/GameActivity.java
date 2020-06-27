@@ -7,6 +7,7 @@ import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.gameoflife.classes.Field;
 import com.example.gameoflife.threads.SurfView;
 import com.example.gameoflife.R;
 public class GameActivity extends AppCompatActivity {
@@ -25,6 +26,13 @@ public class GameActivity extends AppCompatActivity {
         play = findViewById(R.id.play);
         move = findViewById(R.id.move);
         edit = findViewById(R.id.edit);
+
+    }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         move.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,7 +58,10 @@ public class GameActivity extends AppCompatActivity {
                 surfView.setBool(isPlaying, isMoving, isEditing);
             }
         });
+    }
 
+    public Field getField(){
+        return surfView.getField();
     }
 
     @Override

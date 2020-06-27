@@ -2,10 +2,17 @@ package com.example.gameoflife.threads;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.Display;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
+import android.view.WindowManager;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
+
+import com.example.gameoflife.R;
+import com.example.gameoflife.classes.Field;
 import com.example.gameoflife.classes.Point;
 import com.example.gameoflife.threads.SThread;
 
@@ -20,6 +27,8 @@ public class SurfView extends SurfaceView implements SurfaceHolder.Callback {
 
     public SurfView(Context context) {
         super(context);
+        this.setX(1000);
+        this.setY(1000);
         getHolder().addCallback(this);
     }
 
@@ -51,6 +60,10 @@ public class SurfView extends SurfaceView implements SurfaceHolder.Callback {
         mMyThread.setBool(isPlaying, isMoving, isEditing);
     }
     int id = 0;
+
+    public Field getField(){
+        return mMyThread.getFied();
+    }
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         switch (event.getActionMasked()){
@@ -61,9 +74,6 @@ public class SurfView extends SurfaceView implements SurfaceHolder.Callback {
 
                 if(isEditing)
                     mMyThread.addordel(p1);
-
-
-
                 break;
             case MotionEvent.ACTION_POINTER_DOWN:
                 if(isMoving)

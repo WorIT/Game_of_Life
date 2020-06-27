@@ -1,12 +1,11 @@
 package com.example.gameoflife.threads;
 
 
-import android.animation.ArgbEvaluator;
-import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.view.SurfaceHolder;
+import android.view.View;
 
 import com.example.gameoflife.classes.Field;
 import com.example.gameoflife.classes.Point;
@@ -14,7 +13,8 @@ import com.example.gameoflife.classes.Point;
 
 public class SThread extends Thread {
 
-    private final int REDRAW_TIME = 20;
+
+    private final int REDRAW_TIME = 15;
     private Field field;
     boolean isFixed = false;
     private final SurfaceHolder mSurfaceHolder;
@@ -28,7 +28,7 @@ public class SThread extends Thread {
         mSurfaceHolder = holder;
         mRunning = false;
 
-        field = new Field(new Point(500, 500));
+        field = new Field(new Point(1000, 1000));
 
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
@@ -44,11 +44,15 @@ public class SThread extends Thread {
         return System.nanoTime() / 1_000_000;
     }
 
+    public Field getFied(){
+        return field;
+    }
+
     @Override
     public void run() {
         Canvas canvas;
         int g = 0;
-        while (mRunning) {
+        while (mRunning && !isInterrupted()) {
             long curTime = getTime();
             long elapsedTime = curTime - mPrevRedrawTime;
             if (elapsedTime < REDRAW_TIME)
@@ -64,17 +68,20 @@ public class SThread extends Thread {
                         g = 0;
                     }
                 }
-            } catch (NullPointerException e) {
+            } catch (Exception e) {
             } finally {
                 if (canvas != null)
-                    mSurfaceHolder.unlockCanvasAndPost(canvas);
+                    try {
+                        mSurfaceHolder.unlockCanvasAndPost(canvas);
+                    }catch (Exception e){}
+
             }
 
             mPrevRedrawTime = curTime;
         }
     }
 
-    public void setShift(Point p) {
+    public void setShift(Point p){
         field.shift = p;
     }
 
@@ -88,7 +95,7 @@ public class SThread extends Thread {
         this.isEditing = isEditing;
         this.isPlaying = isPlaying;
         this.isMoving = isMoving;
-        if (isEditing)
+        if(isEditing)
             field.reZero();
     }
 
@@ -107,8 +114,7 @@ public class SThread extends Thread {
         field.spw = 0;
         field.sph = 0;
     }
-
-    void addordel(Point p) {
+    void addordel(Point p){
         field.touch(p);
     }
 

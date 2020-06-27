@@ -4,8 +4,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
-
-
 public class Field {
     int [][] field0;
     int [][] field;

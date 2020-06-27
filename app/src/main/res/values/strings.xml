@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Game of Life</string>
+    <string name="app_name">Math Game Of Life</string>
     <string name="play">Play</string>
     <string name="my_saves">Saves</string>
     <string name="patterns">Patterns</string>
@@ -8,6 +8,7 @@
     <string name="sign_in">Sign in</string>
     <!-- Strings related to login -->
     <string name="login">Username</string>
+    <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
@@ -20,5 +21,7 @@
     <string name="new_email">Your email</string>
     <string name="top_rated_users_tv">Top rated users</string>
     <string name="top_rated_patterns_tv">Best patterns</string>
+    <string name="give_email">Send verification email</string>
+
 </resources>
 
