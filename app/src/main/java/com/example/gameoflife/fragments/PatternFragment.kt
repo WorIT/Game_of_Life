@@ -45,6 +45,7 @@ class PatternFragment : Fragment() {
         val rv = view.findViewById<RecyclerView>(R.id.rv_patterns)
         val tvcur = view.findViewById<TextView>(R.id.tv_current_title)
         val iv = view.findViewById<ImageView>(R.id.pattern_iv_curent)
+        iv.setImageResource(R.drawable.ic_baseline_grid_on_24)
         view.setOnClickListener(View.OnClickListener {})
         val arr = db!!.selectAll()
         val titl = db!!.getqq()

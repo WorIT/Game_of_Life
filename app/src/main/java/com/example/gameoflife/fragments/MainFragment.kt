@@ -17,7 +17,6 @@ import com.google.android.gms.ads.*
 class MainFragment : Fragment() {
     private var card_start: CardView? = null
     private var card_patterns: CardView? = null
-    private var card_make: CardView? = null
     private var adview: AdView? = null
 
     override fun onCreateView(
@@ -42,7 +41,6 @@ class MainFragment : Fragment() {
 
     private fun init(view: View) {
         card_start = view.findViewById(R.id.main_card_start)
-        card_make= view.findViewById(R.id.cardmake)
         card_patterns = view.findViewById(R.id.pattern_card_patterns)
 
         adview = view.findViewById(R.id.bannermain)
@@ -60,10 +58,6 @@ class MainFragment : Fragment() {
         card_patterns?.setOnClickListener(View.OnClickListener {
             startFragment(PatternFragment())
 
-        })
-
-        card_make?.setOnClickListener(View.OnClickListener {
-            startActivity(Intent(activity, MakeActivity::class.java))
         })
 
     }
