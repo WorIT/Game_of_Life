@@ -57,19 +57,12 @@ public class MakeActivity extends AppCompatActivity {
             }
         }).start();
 
-
-
-
     }
-
 
     @Override
     protected void onStart() {
         super.onStart();
 
-        //title.setText(new Gson().toJson(getField()));
-
-        ///db.insert(title.getText().toString(),gson.toJson(getField()),path.getText().toString());
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

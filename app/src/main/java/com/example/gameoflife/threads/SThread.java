@@ -23,18 +23,13 @@ public class SThread extends Thread {
     boolean isPlaying = true, isMoving = true, isEditing = false;
     private boolean mRunning;
     private long mPrevRedrawTime;
-    private Context context;
-
-
-
 
     private Paint mPaint;
 
 
-    public SThread(SurfaceHolder holder,Field field, Context context) {
+    public SThread(SurfaceHolder holder,Field field) {
         mSurfaceHolder = holder;
         mRunning = false;
-        this.context = context;
         if (field!= null){
             this.field = field;
 
@@ -144,6 +139,6 @@ public class SThread extends Thread {
             isFixed = false;
         }
         field.draw(canvas);
-
     }
+
 }

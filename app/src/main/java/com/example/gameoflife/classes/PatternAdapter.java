@@ -24,22 +24,18 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class PatternAdapter extends RecyclerView.Adapter<PatternAdapter.PatternViewHolder> implements Filterable{
+public class PatternAdapter extends RecyclerView.Adapter<PatternAdapter.PatternViewHolder> {
 
     private ArrayList<Pattern> patternArrayList;
-    private ArrayList<Pattern> OrigList;
     private View view;
-    private Context context;
     private HashMap<String,Integer> paths = new HashMap<>();
     public DbPatterns db;
 
 
     public PatternAdapter(ArrayList<Pattern> personArrayList, View view, Context context){
-        this.OrigList = new ArrayList<>(personArrayList);
         this.patternArrayList = personArrayList;
         db = new DbPatterns(context);
         this.view = view;
-        this.context = context;
         paths.put("glider", R.mipmap.ic_glider);
         paths.put("fight",R.mipmap.ic_fight);
         paths.put("wash",R.mipmap.ic_wash);
@@ -82,7 +78,6 @@ public class PatternAdapter extends RecyclerView.Adapter<PatternAdapter.PatternV
                 TextView tv = view.findViewById(R.id.tv_current_title);
                 tv.setText(pattern.getTitle());
                 db.insqq(pattern.getTitle());
-               /// Log.d("aaaa",mSettings.getString(APP_PREFERENCES_CURRNT_FIELD," "));
 
 
             }
@@ -90,45 +85,9 @@ public class PatternAdapter extends RecyclerView.Adapter<PatternAdapter.PatternV
 
     }
 
-
-
     @Override
     public int getItemCount(){
         return patternArrayList.size();
     }
 
-    public Filter getFilter(){
-        return examplefilter;
-    }
-
-    private Filter examplefilter = new Filter() {
-        @Override
-        protected FilterResults performFiltering(CharSequence constraint) {
-            ArrayList<Pattern> filterlist = new ArrayList<>();
-            if(constraint == null || constraint.length() == 0 ){
-                filterlist.addAll(OrigList);
-            }else{
-                String filterpattern = constraint.toString().toLowerCase().trim();
-
-                for(Pattern pattern : OrigList){
-                    //// if((pattern.getTitlePattern() + " " +  pattern.getTitlePattern()).toLowerCase().contains(filterpattern)){
-                    filterlist.add(pattern);
-                }
-            }
-        FilterResults results = new FilterResults();
-        results.values = filterlist;
-        return results;
-    }
-
-      @Override
-       protected void publishResults(CharSequence constraint, FilterResults results) {
-
-          patternArrayList.clear();
-          patternArrayList.addAll((ArrayList<Pattern>)results.values);
-          notifyDataSetChanged();
-
-
-       }
-
-    };
 }

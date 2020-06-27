@@ -1,5 +1,6 @@
 package com.example.gameoflife.threads;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -25,14 +26,10 @@ public class SurfView extends SurfaceView implements SurfaceHolder.Callback {
     public SThread mMyThread;
     boolean isPlaying = true, isMoving = true, isEditing = false;
     Point p1 = new Point(0,0);
-    Point p2 = new Point(0,0);
-    public int counttv = 0;
     double distance1 = 0;
     double distance2 = 0;
     Field field;
     Context context;
-    boolean isover = false;
-    int COLOR_BACK = Color.BLACK;
 
     public SurfView(Context context) {
         super(context);
@@ -44,7 +41,7 @@ public class SurfView extends SurfaceView implements SurfaceHolder.Callback {
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
-        mMyThread = new SThread(getHolder(), field,context);
+        mMyThread = new SThread(getHolder(), field);
         mMyThread.setRunning(true);
         mMyThread.start();
     }
@@ -70,12 +67,13 @@ public class SurfView extends SurfaceView implements SurfaceHolder.Callback {
         this.isMoving = isMoving;
         mMyThread.setBool(isPlaying, isMoving, isEditing);
     }
-    int id = 0;
-
 
     public Field getField(){
         return mMyThread.getFied();
     }
+
+    int id = 0;
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         switch (event.getActionMasked()){

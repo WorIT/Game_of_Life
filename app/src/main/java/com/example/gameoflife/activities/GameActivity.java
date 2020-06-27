@@ -33,17 +33,12 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-
-
-
         play = findViewById(R.id.playm);
         play.setBackgroundResource(R.drawable.ic_baseline_pause_24);
         move = findViewById(R.id.movem);
         move.setBackgroundResource(R.drawable.ic_baseline_block_24);
         edit = findViewById(R.id.editm);
         edit.setBackgroundResource(R.drawable.ic_baseline_build_24);
-
-
 
         db = new DbPatterns(this);
 
@@ -82,10 +77,9 @@ public class GameActivity extends AppCompatActivity {
                     x = 0;
                 }
                     if (x > 0) {
-                        surfView.mMyThread.setRunning(false);
 
+                        surfView.mMyThread.setRunning(false);
                         Field fields = new Gson().fromJson(db.select(db.getqq()).getField(), Field.class);
-                        Log.d("aarr", fields.toString());
                         surfView.mMyThread.setField(fields);
                         surfView.mMyThread.setRunning(true);
 
@@ -162,8 +156,12 @@ public class GameActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         surfView.mMyThread.interrupt();
-        db.close();
-        finish();
         super.onBackPressed();
+    }
+
+    @Override
+    protected void onDestroy() {
+        db.close();
+        super.onDestroy();
     }
 }

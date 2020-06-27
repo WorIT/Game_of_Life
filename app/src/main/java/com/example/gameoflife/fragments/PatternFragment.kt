@@ -71,19 +71,6 @@ class PatternFragment : Fragment() {
         rv.layoutManager = layoutManager
         rv.adapter = adapter
 
-
-
-
-
-
-
-
-
-
-
-
-
-
         return view
     }
 

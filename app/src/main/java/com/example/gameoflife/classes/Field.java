@@ -33,11 +33,6 @@ public class Field {
         number_in_width = point.getX() / x_size;
         number_in_height = point.getY() / y_size;
         field = new int[number_in_width+2][number_in_height+2];
-       // field[number_in_width/2][number_in_height/2] = 1;
-       // field[number_in_width/2][number_in_height/2-1] = 1;
-        //field[number_in_width/2][number_in_height/2+1] = 1;
-        //field[number_in_width/2+1][number_in_height/2-1] = 1;
-        //field[number_in_width/2-1][number_in_height/2] = 1;
         field0 = new int[number_in_width+2][number_in_height+2];
         for (int i = 0; i < number_in_width+2; i++)
             for (int j = 0; j < number_in_height+2; j++)

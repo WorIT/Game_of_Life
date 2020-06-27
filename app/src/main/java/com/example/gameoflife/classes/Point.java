@@ -16,9 +16,6 @@ public class Point {
         return x;
     }
 
-    public void setX(int x) {
-        this.x = x;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -29,9 +26,6 @@ public class Point {
                 y == point.y;
     }
 
-    public double distance(Point p){
-        return Math.sqrt((x-p.getX())*(x-p.getX()) + (y-p.getY())*(y-p.getY()));
-    }
 
     @Override
     public String toString() {
@@ -43,10 +37,6 @@ public class Point {
 
     public int getY() {
         return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
     }
 
 }

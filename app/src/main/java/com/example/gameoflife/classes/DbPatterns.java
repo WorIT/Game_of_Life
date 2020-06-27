@@ -37,12 +37,13 @@ public class DbPatterns {
     }
     public void close(){mDataBase.close();}
 
-    public long insert(String title, String field, String path) {
+    public void insert(String title, String field, String path) {
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_TITLE, title);
         cv.put(COLUMN_FIELD, field);
         cv.put(COLUMN_PATH, path);
-        return mDataBase.insert(TABLE_NAME, null, cv);
+        mDataBase.insert(TABLE_NAME, null, cv);
+        return;
     }
     public long insqq(String title){
             ContentValues cv = new ContentValues();

@@ -14,18 +14,12 @@ import com.example.gameoflife.activities.GameActivity
 import com.example.gameoflife.activities.MakeActivity
 import com.google.android.gms.ads.*
 
-
 class MainFragment : Fragment() {
     private var card_start: CardView? = null
     private var card_patterns: CardView? = null
     private var card_make: CardView? = null
     private var adview: AdView? = null
-
-
-
-
     private lateinit var iv: ImageView
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,8 +34,6 @@ class MainFragment : Fragment() {
         MobileAds.initialize(activity,"ca-app-pub-3940256099942544/1033173712")
         val adReq = AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build()
         adview?.loadAd(adReq)
-
-
 
         return view
     }
@@ -74,9 +66,6 @@ class MainFragment : Fragment() {
         card_make?.setOnClickListener(View.OnClickListener {
             startActivity(Intent(activity, MakeActivity::class.java))
         })
-
-
-
 
     }
 

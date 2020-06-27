@@ -13,8 +13,6 @@ import com.example.gameoflife.fragments.MainFragment
 open class MainActivity : AppCompatActivity()  {
     val APP_PREFERENCES = "mysettings"
     val APP_PREFERENCES_IS_FIRST = "first"
-    var mSettings: SharedPreferences? = null
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,15 +33,8 @@ open class MainActivity : AppCompatActivity()  {
 
         }).start()
 
-
-
         startFragment(MainFragment())
-
-
-
-
     }
-
 
     private fun startFragment(fragment: Fragment){
         val transaction = supportFragmentManager.beginTransaction()
@@ -51,8 +42,6 @@ open class MainActivity : AppCompatActivity()  {
         transaction.addToBackStack(null)
         transaction.commit()
     }
-
-
 
 }
 
