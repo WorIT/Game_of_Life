@@ -19,7 +19,6 @@ class MainFragment : Fragment() {
     private var card_patterns: CardView? = null
     private var card_make: CardView? = null
     private var adview: AdView? = null
-    private lateinit var iv: ImageView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
