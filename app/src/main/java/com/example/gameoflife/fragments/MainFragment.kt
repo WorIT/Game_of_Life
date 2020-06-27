@@ -2,16 +2,13 @@ package com.example.gameoflife.fragments
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import com.example.gameoflife.R
 import com.example.gameoflife.activities.GameActivity
-import com.example.gameoflife.activities.MakeActivity
 import com.google.android.gms.ads.*
 
 class MainFragment : Fragment() {

@@ -1,13 +1,9 @@
 package com.example.gameoflife.threads;
 
-
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.view.SurfaceHolder;
-import android.view.View;
 
 import com.example.gameoflife.classes.Field;
 import com.example.gameoflife.classes.Point;

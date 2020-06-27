@@ -11,8 +11,8 @@ import com.example.gameoflife.fragments.MainFragment
 
 
 open class MainActivity : AppCompatActivity()  {
-    val APP_PREFERENCES = "mysettings"
-    val APP_PREFERENCES_IS_FIRST = "first"
+    private val APP_PREFERENCES = "mysettings"
+    private val APP_PREFERENCES_IS_FIRST = "first"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

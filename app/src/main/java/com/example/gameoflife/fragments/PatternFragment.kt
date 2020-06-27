@@ -1,8 +1,6 @@
 package com.example.gameoflife.fragments
 
-import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,10 +14,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.gameoflife.R
 import com.example.gameoflife.classes.DbPatterns
 import com.example.gameoflife.classes.PatternAdapter
-import com.google.android.gms.ads.AdListener
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.AdView
-import com.google.android.gms.ads.MobileAds
 
 
 class PatternFragment : Fragment() {

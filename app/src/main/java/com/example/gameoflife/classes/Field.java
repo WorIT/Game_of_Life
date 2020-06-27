@@ -4,7 +4,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
-import androidx.preference.PreferenceManager;
 
 public class Field {
     int [][] field0;

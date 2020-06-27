@@ -1,25 +1,17 @@
 package com.example.gameoflife.classes;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.service.autofill.DateValueSanitizer;
-import android.telephony.gsm.GsmCellLocation;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.example.gameoflife.R;
-import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.HashMap;

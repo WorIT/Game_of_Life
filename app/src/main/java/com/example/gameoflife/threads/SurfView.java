@@ -2,24 +2,13 @@ package com.example.gameoflife.threads;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.view.Display;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.view.View;
-import android.view.WindowManager;
 
-import androidx.constraintlayout.widget.ConstraintLayout;
-
-import com.example.gameoflife.R;
 import com.example.gameoflife.classes.Field;
 import com.example.gameoflife.classes.Point;
-import com.example.gameoflife.threads.SThread;
-import com.google.gson.Gson;
 
 public class SurfView extends SurfaceView implements SurfaceHolder.Callback {
 
