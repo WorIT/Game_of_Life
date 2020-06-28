@@ -4,6 +4,9 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
+import com.example.gameoflife.threads.SThread;
+import com.google.android.gms.dynamic.IFragmentWrapper;
+
 
 public class Field {
     int [][] field0;
@@ -49,14 +52,22 @@ public class Field {
                 field[i][j] = field0[i][j];
     }
 
-    public void draw(Canvas canvas){
+    public int[][] getZeroField() {
+        return field0;
+    }
+
+    public void setZeroField(int[][] field0) {
+        this.field0 = field0;
+    }
+
+    public void draw(Canvas canvas, SThread thread){
+        int countLifes = 0;
         height = canvas.getHeight();
         width = canvas.getWidth();
         x_size_with_coff = (int) (x_size * coefficient * fix_coefficient);
         y_size_with_coff = (int) (y_size * coefficient * fix_coefficient);
         int x_shift = shift.getX() + fix_shift.getX() - (width-x_size_with_coff*(number_in_width-1)) / 2 - spw - fix_spw;
         int y_shift = shift.getY() + fix_shift.getY() - (height-y_size_with_coff*(number_in_height-1)) / 2 - sph - fix_sph;
-        int countLifes = 0;
         for (int i = 1; i < number_in_width; i++)
             for (int j = 1; j < number_in_height; j++)
                 if(field[i][j] == ALIVE){
@@ -65,6 +76,10 @@ public class Field {
                     p.setColor(Color.GREEN);
                     canvas.drawRect(x_size_with_coff*(i-1) - x_shift , y_size_with_coff*(j-1) - y_shift, x_size_with_coff*i - x_shift, y_size_with_coff*j - y_shift,p);
                 }
+        thread.setCountlifes(countLifes);
+        if(countLifes == 0){
+            thread.handler.sendEmptyMessage(2); ///gameover?
+        }
 
         Paint pline = new Paint();
         pline.setColor(Color.WHITE);

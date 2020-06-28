@@ -53,7 +53,7 @@ class PatternFragment : Fragment() {
 
 
         btn_del.setOnClickListener(View.OnClickListener {
-            db!!.deleteqq()
+            db!!.insqq("Empty Field")
             tvcur.text = "Empty Field"
             iv.setImageResource(R.drawable.ic_baseline_grid_on_24)
         })

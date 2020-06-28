@@ -26,9 +26,6 @@ open class MainActivity : AppCompatActivity()  {
             if(mSettings.getBoolean(APP_PREFERENCES_IS_FIRST,true)){
                 val db = DbPatterns(this)
                 db.crdb()
-                val editor = mSettings.edit()
-                editor.putBoolean(APP_PREFERENCES_IS_FIRST, false)
-                editor.apply()
             }
 
         }).start()

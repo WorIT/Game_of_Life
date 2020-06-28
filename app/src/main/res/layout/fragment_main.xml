@@ -5,7 +5,7 @@
     android:id="@+id/containerMain"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="#000000"
     tools:context=".activities.MainActivity">
 
 
@@ -40,6 +40,8 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginBottom="20dp"
         app:cardCornerRadius="10dp"
+        app:strokeWidth="1dp"
+        app:strokeColor="@color/accent"
         app:layout_constraintBottom_toTopOf="@+id/main_card_start"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -47,7 +49,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/accent"
+            android:background="@color/ic_wash_background"
             android:elevation="6dp">
 
 
@@ -87,6 +89,8 @@
         android:layout_marginBottom="50dp"
         app:cardCornerRadius="10dp"
         app:cardElevation="6dp"
+        app:strokeWidth="1dp"
+        app:strokeColor="@color/accent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -94,7 +98,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/accent">
+            android:background="@color/ic_wash_background"
+            >
 
             <ImageView
                 android:id="@+id/imageView"

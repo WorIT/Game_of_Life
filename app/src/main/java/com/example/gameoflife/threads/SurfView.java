@@ -7,8 +7,10 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
+import com.example.gameoflife.R;
 import com.example.gameoflife.classes.Field;
 import com.example.gameoflife.classes.Point;
+import com.google.gson.Gson;
 
 public class SurfView extends SurfaceView implements SurfaceHolder.Callback {
 
@@ -22,6 +24,7 @@ public class SurfView extends SurfaceView implements SurfaceHolder.Callback {
 
     public SurfView(Context context) {
         super(context);
+        this.field = new Gson().fromJson(context.getString(R.string.empty_field), Field.class);
         this.context = context;
         this.setX(1000);
         this.setY(1000);

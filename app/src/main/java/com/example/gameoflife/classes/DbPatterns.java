@@ -66,7 +66,7 @@ public class DbPatterns {
             mCursor.moveToLast();
             title = mCursor.getString(NUM_COLUMN_TITLE);
         }catch (Exception e){
-                title = "";
+                title = "Empty Field";
         }finally {
             return title;
         }
@@ -111,6 +111,14 @@ public class DbPatterns {
                     COLUMN_TITLE + " TEXT);";
             mDataBase.execSQL(query);
             mDataBase.execSQL(queryqq);
+            insqq("Glider");
+            SharedPreferences.Editor editor = mSettings.edit();
+            editor.putBoolean(IS_FIRST, false);
+            editor.apply();
+
+            String fieldempty = context.getString(R.string.empty_field);
+            insert("Empty Field",fieldempty,"me");
+
             String fieldglider = context.getString(R.string.glider_field);
             insert("Glider",fieldglider,"glider");
             String fieldfight = context.getString(R.string.fight_field);
@@ -119,10 +127,7 @@ public class DbPatterns {
             insert("Washing machine",fieldwash,"wash");
             String fieldweekender = context.getString(R.string.weekender_field);
             insert("Weekendeer",fieldweekender,"weekender");
-            SharedPreferences.Editor editor = mSettings.edit();
-            insqq("Glider");
-            editor.putBoolean(IS_FIRST, false);
-            editor.apply();
+
         }
 
     private class OpenHelper extends SQLiteOpenHelper {

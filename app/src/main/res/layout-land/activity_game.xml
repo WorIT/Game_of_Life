@@ -2,26 +2,42 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constain_game_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.GameActivity"
-    tools:ignore="MissingDefaultResource">
+    tools:ignore="MissingDefaultResource"
+    android:background="@color/icons">
 
-    <FrameLayout
-        android:id="@+id/frameLayout21"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@color/primary"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
-        <com.example.gameoflife.threads.SurfView
-            android:id="@+id/surfView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+        <FrameLayout
+            android:id="@+id/frameLayout21"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    </FrameLayout>
+            <com.example.gameoflife.threads.SurfView
+                android:id="@+id/surfView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+
+        </FrameLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearLayout2"
@@ -31,6 +47,7 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent">
 
         <EditText
@@ -39,8 +56,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:ems="10"
-            android:hint="Title"
+            android:hint="Title your new patern"
             android:inputType="textPersonName"
+            android:textColorHint="#3F51B5"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/buttonmakeadd"
             app:layout_constraintTop_toTopOf="@+id/buttonmakeadd"
@@ -50,9 +68,8 @@
             android:id="@+id/buttonmakeadd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:backgroundTint="@color/accent"
-            android:text="Add this pattern to My patterns"
+            android:text="ADD"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -88,6 +105,28 @@
             android:padding="10dp"
             app:layout_constraintEnd_toStartOf="@+id/editm"
             app:layout_constraintTop_toTopOf="@+id/editm" />
+
+        <TextView
+            android:id="@+id/tv_game_countmove"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="0 moves"
+            android:textColor="@color/icons"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/et_make_title"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.551" />
+
+        <TextView
+            android:id="@+id/tv_game_countlifes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            android:text="lifes"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_game_countmove"
+            app:layout_constraintEnd_toStartOf="@+id/movem" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

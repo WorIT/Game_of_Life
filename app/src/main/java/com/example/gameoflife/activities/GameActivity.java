@@ -9,9 +9,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.gameoflife.classes.DbPatterns;
 import com.example.gameoflife.classes.Field;
@@ -24,14 +27,26 @@ import static java.lang.Thread.sleep;
 
 public class GameActivity extends AppCompatActivity {
 
+    private final int NEWMOVE = 0;
+    private final int COUNTLIFES = 1;
+    private final int GAMEOVER = 2;
+    private final int EMPTYPATTERN = 3;
+    private final int CONTAINSPATTERN = 4;
+
+
+    private boolean flag = false;
+
     SurfView surfView;
     ImageButton play, move, edit;
     DbPatterns db;
+    TextView tv_countmoves, tv_countlifes;
 
     EditText title;
     Button add;
 
-    boolean isPlaying = true, isMoving = true, isEditing = false;
+    int moves = 0;
+
+    boolean isPlaying = false, isMoving = true, isEditing = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,18 +56,21 @@ public class GameActivity extends AppCompatActivity {
         play = findViewById(R.id.playmake);
         play.setBackgroundResource(R.drawable.ic_baseline_pause_24);
         move = findViewById(R.id.movem);
-        move.setBackgroundResource(R.drawable.ic_baseline_block_24);
+        move.setBackgroundResource(R.drawable.ic_baseline_pan_tool_24);
         edit = findViewById(R.id.editm);
         edit.setBackgroundResource(R.drawable.ic_baseline_build_24);
+
 
         db = new DbPatterns(this);
 
         title = findViewById(R.id.et_make_title);
         add = findViewById(R.id.buttonmakeadd);
-
+        tv_countlifes = findViewById(R.id.tv_game_countlifes);
+        tv_countmoves = findViewById(R.id.tv_game_countmove);
 
 
     }
+
 
 
     @Override
@@ -60,47 +78,39 @@ public class GameActivity extends AppCompatActivity {
         super.onStart();
         surfView = findViewById(R.id.surfView);
 
-        final Handler handler = new Handler() {
-            @SuppressLint("HandlerLeak")
-            @Override
-            public void handleMessage(Message msg) {
-                if (msg.getData().getString("Key").equals("empty"))
-                    empty();
-                else {
-                    add.setEnabled(false);
-                    title.setHint("add during pause");
-                }
-            }
-        };
 
         new Thread(new Runnable() {
             public void run() {
                 try {
-                    sleep(200);
+                    sleep(300);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                Message msg = handler.obtainMessage();
-                Bundle bundle = new Bundle();
-                int x = 5;
+
+                int x = 0;
                 try{
                     x = db.getqq().length();
                 }catch (Exception e){
                     x = 0;
                 }
+
+                surfView.mMyThread.setHandler(handler);
                     if (x > 0) {
-                        bundle.putString("Key", "contains");
-                        msg.setData(bundle);
                         surfView.mMyThread.setRunning(false);
                         Field fields = new Gson().fromJson(db.select(db.getqq()).getField(), Field.class);
                         surfView.mMyThread.setField(fields);
-                        surfView.mMyThread.setRunning(true);
-                        handler.sendMessage(msg);
+                        if (!db.getqq().equals("Empty Field")){
+                            surfView.mMyThread.setRunning(true);
+                            surfView.setBool(true,true,false);
+                            handler.sendEmptyMessage(CONTAINSPATTERN);
+                        }else{
+                            handler.sendEmptyMessage(EMPTYPATTERN);
+                        }
+
+
 
                     }else {
-                        bundle.putString("Key", "empty");
-                        msg.setData(bundle);
-                        handler.sendMessage(msg);
+                        handler.sendEmptyMessage(EMPTYPATTERN);
                     }
 
 
@@ -132,14 +142,15 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (isMoving) {
-                    v.setBackgroundResource(R.drawable.ic_baseline_pan_tool_24);
+                    isEditing = true;
+                    v.setBackgroundResource(R.drawable.ic_baseline_block_24);
                     edit.setBackgroundResource(R.drawable.ic_baseline_check_24);
                 } else {
-                    v.setBackgroundResource(R.drawable.ic_baseline_block_24);
+                    isEditing = false;
+                    v.setBackgroundResource(R.drawable.ic_baseline_pan_tool_24);
                     edit.setBackgroundResource(R.drawable.ic_baseline_build_24);
                 }
-                isMoving = !isMoving;
-                isEditing = false;
+                isMoving = !isMoving;;
                 surfView.setBool(isPlaying, isMoving, isEditing);
             }
         });
@@ -168,11 +179,11 @@ public class GameActivity extends AppCompatActivity {
                 if (isEditing) {
                     v.setBackgroundResource(R.drawable.ic_baseline_build_24);
                     play.setBackgroundResource(R.drawable.ic_baseline_pause_24);
-                    move.setBackgroundResource(R.drawable.ic_baseline_block_24);
+                    move.setBackgroundResource(R.drawable.ic_baseline_pan_tool_24);
                 } else {
                     v.setBackgroundResource(R.drawable.ic_baseline_check_24);
                     play.setBackgroundResource(R.drawable.ic_baseline_play_arrow_24);
-                    move.setBackgroundResource(R.drawable.ic_baseline_pan_tool_24);
+                    move.setBackgroundResource(R.drawable.ic_baseline_block_24);
                 }
                 isEditing = !isEditing;
                 isPlaying = !isEditing;
@@ -183,12 +194,17 @@ public class GameActivity extends AppCompatActivity {
     }
 
     void empty(){
-        surfView.setBool(false,false,true);
-        play.setBackgroundResource(R.drawable.ic_baseline_play_arrow_24);
-        move = findViewById(R.id.movem);
-        move.setBackgroundResource(R.drawable.ic_baseline_pan_tool_24);
-        edit = findViewById(R.id.editm);
+        surfView.mMyThread.setRunning(false);
+        Field fields = new Gson().fromJson(getApplicationContext().getString(R.string.empty_field), Field.class);
+        surfView.mMyThread.setField(fields);
         edit.setBackgroundResource(R.drawable.ic_baseline_check_24);
+        play.setBackgroundResource(R.drawable.ic_baseline_play_arrow_24);
+        move.setBackgroundResource(R.drawable.ic_baseline_pan_tool_24);
+        surfView.mMyThread.setRunning(true);
+        isPlaying = false;
+        isMoving = false;
+        isEditing = true;
+        surfView.setBool(false,false,true);
     }
 
     public Field getField(){
@@ -224,4 +240,72 @@ public class GameActivity extends AppCompatActivity {
         db.close();
         super.onDestroy();
     }
+
+
+    @SuppressLint("HandlerLeak")
+    final Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+           switch (msg.what){
+
+               case NEWMOVE:{
+                   moves +=1;
+                   tv_countmoves.setText(moves + " moves");
+                   flag = true;
+                   break;
+               }
+
+
+
+               case COUNTLIFES:{
+                   tv_countlifes.setText(surfView.mMyThread.countlifes + " lifes");
+                   flag = true;
+                   break;
+               }
+
+
+               case CONTAINSPATTERN:{
+                   isPlaying = true;
+                   add.setEnabled(false);
+                   title.setHint("add during pause");
+                   break;
+               }
+
+
+               case GAMEOVER:{
+
+                   if (isPlaying && flag){
+                       surfView.setBool(false,false,false);
+                       move.setBackgroundResource(R.drawable.ic_baseline_pan_tool_24);
+                       edit.setBackgroundResource(R.drawable.ic_baseline_build_24);
+                       play.setBackgroundResource(R.drawable.ic_baseline_play_arrow_24);
+                     //  startFragment(new GameOverFragment());
+                   }
+                   break;
+
+               }
+
+
+               case EMPTYPATTERN:{
+                   empty();
+                   break;
+               }
+
+
+
+
+
+               default:
+                   break;
+           }
+        }
+    };
+
+    private void startFragment(Fragment fragment){
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.constain_game_container,fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
 }

@@ -3,6 +3,10 @@ package com.example.gameoflife.threads;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.telephony.MbmsGroupCallSession;
 import android.view.SurfaceHolder;
 
 import com.example.gameoflife.classes.Field;
@@ -12,6 +16,13 @@ import com.example.gameoflife.classes.Point;
 public class SThread extends Thread {
 
 
+    private final int NEWMOVE = 0;
+    private final int COUNTLIFES = 1;
+    private final int GAMEOVER = 2;
+    private final int EMPTYPATTERN = 3;
+    private final int CONTAINSPATTERN = 4;
+
+
     private final int REDRAW_TIME = 15;
     private Field field;
     boolean isFixed = false;
@@ -19,8 +30,11 @@ public class SThread extends Thread {
     boolean isPlaying = true, isMoving = true, isEditing = false;
     private boolean mRunning;
     private long mPrevRedrawTime;
+    public int countlifes = 0;
 
     private Paint mPaint;
+
+    public Handler handler;
 
 
     public SThread(SurfaceHolder holder,Field field) {
@@ -43,6 +57,15 @@ public class SThread extends Thread {
 
     }
 
+    public void setHandler(Handler handler) {
+        this.handler = handler;
+    }
+
+    public void setCountlifes(int countlifes) {
+        this.countlifes = countlifes;
+        handler.sendEmptyMessage(COUNTLIFES);
+    }
+
     public void setRunning(boolean running) {
         mRunning = running;
         mPrevRedrawTime = getTime();
@@ -53,6 +76,8 @@ public class SThread extends Thread {
     }
 
     public void setField(Field field){this.field = field;}
+    public void setZeroField(Field field){this.field.setZeroField(field.getZeroField());}
+
 
     public Field getFied(){
         return field;
@@ -75,6 +100,7 @@ public class SThread extends Thread {
                     g++;
                     if (g >= 15 && isPlaying) {
                         field.move();
+                        handler.sendEmptyMessage(NEWMOVE);
                         g = 0;
                     }
                 }
@@ -134,7 +160,7 @@ public class SThread extends Thread {
             field.shift = new Point(0, 0);
             isFixed = false;
         }
-        field.draw(canvas);
+        field.draw(canvas, this);
     }
 
 }

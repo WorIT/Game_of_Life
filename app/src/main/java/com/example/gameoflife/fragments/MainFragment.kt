@@ -1,5 +1,6 @@
 package com.example.gameoflife.fragments
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -24,13 +25,18 @@ class MainFragment : Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_main, container, false)
         init(view)
-        setListeners()
 
-        MobileAds.initialize(activity,"ca-app-pub-3940256099942544/1033173712")
-        val adReq = AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build()
-        adview?.loadAd(adReq)
+        setListeners()
+      // MobileAds.initialize(activity, context?.getString(R.string.banner_ad_unit_id))
+     //  val adReq = AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build()
+     //   adview?.loadAd(adReq)
 
         return view
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
     }
 
 
