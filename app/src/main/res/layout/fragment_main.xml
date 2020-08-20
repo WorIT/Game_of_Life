@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000"
-    tools:context=".activities.MainActivity">
+    tools:context="nechaev.gameoflife.gameoflife.activities.MainActivity">
 
 
     <com.google.android.material.appbar.MaterialToolbar
@@ -22,16 +22,6 @@
         
 
     </com.google.android.material.appbar.MaterialToolbar>
-
-    <com.google.android.gms.ads.AdView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/bannermain"
-        app:adSize="BANNER"
-        app:adUnitId="ca-app-pub-3940256099942544/6300978111"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/pattern_card_patterns"

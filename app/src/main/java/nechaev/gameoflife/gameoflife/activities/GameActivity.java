@@ -1,14 +1,18 @@
-package com.example.gameoflife.activities;
+package nechaev.gameoflife.gameoflife.activities;
 
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,10 +20,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.gameoflife.classes.DbPatterns;
-import com.example.gameoflife.classes.Field;
-import com.example.gameoflife.threads.SurfView;
-import com.example.gameoflife.R;
+import nechaev.gameoflife.gameoflife.classes.DbPatterns;
+import nechaev.gameoflife.gameoflife.classes.Field;
+import nechaev.gameoflife.gameoflife.fragments.MainFragment;
+import nechaev.gameoflife.gameoflife.threads.SurfView;
+import com.gameoflife.gameoflife.R;
 import com.google.gson.Gson;
 
 
@@ -32,6 +37,7 @@ public class GameActivity extends AppCompatActivity {
     private final int GAMEOVER = 2;
     private final int EMPTYPATTERN = 3;
     private final int CONTAINSPATTERN = 4;
+    SeekBar seek_speed;
 
 
     private boolean flag = false;
@@ -44,6 +50,10 @@ public class GameActivity extends AppCompatActivity {
     EditText title;
     Button add;
 
+    private String APP_PREFERENCES = "mysettings";
+    private String  SPEED = "speed";
+    private SharedPreferences mSettings;
+
     int moves = 0;
 
     boolean isPlaying = false, isMoving = true, isEditing = false;
@@ -52,6 +62,8 @@ public class GameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+        Window w = getWindow();
+        w.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         play = findViewById(R.id.playmake);
         play.setBackgroundResource(R.drawable.ic_baseline_pause_24);
@@ -67,9 +79,32 @@ public class GameActivity extends AppCompatActivity {
         add = findViewById(R.id.buttonmakeadd);
         tv_countlifes = findViewById(R.id.tv_game_countlifes);
         tv_countmoves = findViewById(R.id.tv_game_countmove);
+        mSettings = this.getSharedPreferences(APP_PREFERENCES, MODE_PRIVATE);
+        seek_speed = findViewById(R.id.seek_speed);
+        final SharedPreferences.Editor editor = mSettings.edit();
+        seek_speed.setProgress(mSettings.getInt(SPEED,5));
+        seek_speed.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                surfView.mMyThread.setREDRAW_TIME(20 - progress);
+                editor.putInt(SPEED, 20 - seekBar.getProgress());
+                editor.apply();
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
 
 
     }
+
 
 
 
@@ -232,7 +267,8 @@ public class GameActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         surfView.mMyThread.interrupt();
-        super.onBackPressed();
+        finish();
+        startFragment(new MainFragment());
     }
 
     @Override
@@ -290,10 +326,6 @@ public class GameActivity extends AppCompatActivity {
                    empty();
                    break;
                }
-
-
-
-
 
                default:
                    break;

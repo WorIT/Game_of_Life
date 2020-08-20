@@ -1,4 +1,4 @@
-package com.example.gameoflife.classes;
+package nechaev.gameoflife.gameoflife.classes;
 
 
 public class Point {

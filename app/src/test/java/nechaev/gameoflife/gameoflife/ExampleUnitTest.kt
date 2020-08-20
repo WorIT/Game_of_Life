@@ -1,4 +1,4 @@
-package com.example.gameoflife
+package nechaev.gameoflife.gameoflife
 
 import org.junit.Test
 

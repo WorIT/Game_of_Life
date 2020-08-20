@@ -1,16 +1,13 @@
-package com.example.gameoflife.threads;
+package nechaev.gameoflife.gameoflife.threads;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
-import android.telephony.MbmsGroupCallSession;
 import android.view.SurfaceHolder;
 
-import com.example.gameoflife.classes.Field;
-import com.example.gameoflife.classes.Point;
+import nechaev.gameoflife.gameoflife.classes.Field;
+import nechaev.gameoflife.gameoflife.classes.Point;
 
 
 public class SThread extends Thread {
@@ -23,7 +20,7 @@ public class SThread extends Thread {
     private final int CONTAINSPATTERN = 4;
 
 
-    private final int REDRAW_TIME = 15;
+    private int REDRAW_TIME = 10;
     private Field field;
     boolean isFixed = false;
     private final SurfaceHolder mSurfaceHolder;
@@ -66,6 +63,10 @@ public class SThread extends Thread {
         handler.sendEmptyMessage(COUNTLIFES);
     }
 
+    public void setREDRAW_TIME(int x){
+        this.REDRAW_TIME = x;
+    }
+
     public void setRunning(boolean running) {
         mRunning = running;
         mPrevRedrawTime = getTime();
@@ -98,7 +99,7 @@ public class SThread extends Thread {
                 synchronized (mSurfaceHolder) {
                     draw(canvas);
                     g++;
-                    if (g >= 15 && isPlaying) {
+                    if (g >= REDRAW_TIME && isPlaying) {
                         field.move();
                         handler.sendEmptyMessage(NEWMOVE);
                         g = 0;

@@ -1,4 +1,4 @@
-package com.example.gameoflife.classes;
+package nechaev.gameoflife.gameoflife.classes;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.example.gameoflife.R;
+import com.gameoflife.gameoflife.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;

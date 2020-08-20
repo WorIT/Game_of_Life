@@ -1,4 +1,4 @@
-package com.example.gameoflife.fragments
+package nechaev.gameoflife.gameoflife.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,9 +11,9 @@ import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.gameoflife.R
-import com.example.gameoflife.classes.DbPatterns
-import com.example.gameoflife.classes.PatternAdapter
+import com.gameoflife.gameoflife.R
+import nechaev.gameoflife.gameoflife.classes.DbPatterns
+import nechaev.gameoflife.gameoflife.classes.PatternAdapter
 
 
 class PatternFragment : Fragment() {
@@ -58,7 +58,11 @@ class PatternFragment : Fragment() {
             iv.setImageResource(R.drawable.ic_baseline_grid_on_24)
         })
 
-        val adapter = PatternAdapter(arr, view, activity)
+        val adapter = PatternAdapter(
+            arr,
+            view,
+            activity
+        )
         card_current = view.findViewById(R.id.pattern_card_patterns)
 
         val layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(activity)

@@ -1,4 +1,4 @@
-package com.example.gameoflife.threads;
+package nechaev.gameoflife.gameoflife.threads;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -7,9 +7,9 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
-import com.example.gameoflife.R;
-import com.example.gameoflife.classes.Field;
-import com.example.gameoflife.classes.Point;
+import com.gameoflife.gameoflife.R;
+import nechaev.gameoflife.gameoflife.classes.Field;
+import nechaev.gameoflife.gameoflife.classes.Point;
 import com.google.gson.Gson;
 
 public class SurfView extends SurfaceView implements SurfaceHolder.Callback {

@@ -1,4 +1,4 @@
-package com.example.gameoflife.classes;
+package nechaev.gameoflife.gameoflife.classes;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,7 +7,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.gameoflife.R;
+import com.gameoflife.gameoflife.R;
 
 import java.util.ArrayList;
 

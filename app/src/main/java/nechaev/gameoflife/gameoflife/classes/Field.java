@@ -1,11 +1,10 @@
-package com.example.gameoflife.classes;
+package nechaev.gameoflife.gameoflife.classes;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
-import com.example.gameoflife.threads.SThread;
-import com.google.android.gms.dynamic.IFragmentWrapper;
+import nechaev.gameoflife.gameoflife.threads.SThread;
 
 
 public class Field {

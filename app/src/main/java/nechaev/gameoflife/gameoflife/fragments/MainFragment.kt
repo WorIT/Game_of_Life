@@ -1,4 +1,4 @@
-package com.example.gameoflife.fragments
+package nechaev.gameoflife.gameoflife.fragments
 
 import android.content.Context
 import android.content.Intent
@@ -8,14 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
-import com.example.gameoflife.R
-import com.example.gameoflife.activities.GameActivity
-import com.google.android.gms.ads.*
+import com.gameoflife.gameoflife.R
+import nechaev.gameoflife.gameoflife.activities.GameActivity
 
 class MainFragment : Fragment() {
     private var card_start: CardView? = null
     private var card_patterns: CardView? = null
-    private var adview: AdView? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,9 +25,7 @@ class MainFragment : Fragment() {
         init(view)
 
         setListeners()
-      // MobileAds.initialize(activity, context?.getString(R.string.banner_ad_unit_id))
-     //  val adReq = AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build()
-     //   adview?.loadAd(adReq)
+
 
         return view
     }
@@ -45,8 +41,6 @@ class MainFragment : Fragment() {
     private fun init(view: View) {
         card_start = view.findViewById(R.id.main_card_start)
         card_patterns = view.findViewById(R.id.pattern_card_patterns)
-
-        adview = view.findViewById(R.id.bannermain)
 
     }
 
