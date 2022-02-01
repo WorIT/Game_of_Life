@@ -1,7 +1,5 @@
-.idea/
-.gradle/
-build/
-obj/
 *.iml
+.gradle
 local.properties
-gradlew.bat
+/.idea
+/build
